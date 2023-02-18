@@ -2,26 +2,53 @@ package com.salud.sistema.entidades;
 
 
 import com.salud.sistema.enums.Rol;
+import java.io.Serializable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import lombok.Data;
 
-private class Usuario {
 
-    private Long id;
+@Data
+@Table(name = "usuario") 
+@MappedSuperclass
+public abstract class Usuario implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
 
-    private String nombre;
+    @NotEmpty
+    protected String nombre;
 
-    private String apellido;
+    @NotEmpty
+    protected String apellido;
 
-    private String email;
+    @NotEmpty
+    @Email
+    protected String email;
 
-    private String contrasenia;
+    @NotEmpty
+    protected String contrasenia;
 
-    private Integer dni;
+    @NotEmpty
+    protected Integer dni;
 
-    private Integer telefono;
+    @NotEmpty
+    protected Integer telefono;
 
-    private Imagen imagen;
+    /*@OneToOne
+    protected Imagen imagen;*/ //Hay que agregar imagen
 
-    private Boolean alta;
+    @NotEmpty
+    protected Boolean alta;
 
-    private Rol rol;
+    @Enumerated(EnumType.STRING)
+    protected Rol rol;
 }

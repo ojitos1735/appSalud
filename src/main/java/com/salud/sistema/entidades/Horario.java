@@ -5,11 +5,11 @@ import com.salud.sistema.enums.Dia;
 
 public class Horario {
 
-    private Long id;
+   /* private Long id;
 
     private Dia dias;
 
     private Date horario;
 
-    private Boolean disponible;
+    private Boolean disponible;*/
 }
