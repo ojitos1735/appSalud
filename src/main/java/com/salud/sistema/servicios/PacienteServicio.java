@@ -5,6 +5,10 @@
  */
 package com.salud.sistema.servicios;
 
+/**
+ *
+ * @author gusta
+ */
 public class PacienteServicio {
     
 }

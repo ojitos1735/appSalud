@@ -6,6 +6,12 @@
 package com.salud.sistema.excepciones;
 
 
-public class PacienteExcepciones {
+public class ProfesionalException extends Exception{
+
+    public ProfesionalException (String msg) {
+        super(msg);
+    }
     
+    
+
 }
