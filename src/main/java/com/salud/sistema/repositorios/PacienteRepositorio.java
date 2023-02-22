@@ -12,7 +12,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PacienteRepositorio extends JpaRepository<Paciente, String>{
+public interface PacienteRepositorio extends JpaRepository<Paciente, Long>{
     //Busca los pacientes por nombre
     @Query("SELECT p FROM Paciente p WHERE p.nombre = :nombre")
     public Paciente buscarPorNombre(@Param("nombre") String nombre);

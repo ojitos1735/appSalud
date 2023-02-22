@@ -1,0 +1,20 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.salud.sistema.repositorios;
+
+import com.salud.sistema.entidades.ObraSocial;
+import com.salud.sistema.entidades.Paciente;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface HistoriaClinicaRepositorio extends JpaRepository<ObraSocial, Long> {
+    //Busca las historias clinicas por paciente
+    @Query("SELECT h FROM HistoriaClinica h WHERE h.paciente.dni = :dni")
+    public Paciente buscarPorPaciente (@Param ("dni") Integer dni);
+}

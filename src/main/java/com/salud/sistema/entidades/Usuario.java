@@ -5,13 +5,16 @@ import com.salud.sistema.enums.Rol;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 
 @Data
-public class Usuario {
+@MappedSuperclass
+public abstract class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
@@ -29,18 +32,15 @@ public class Usuario {
     @NotEmpty
     protected String contrasenia;
 
-    @NotEmpty
     protected Integer dni;
 
-    @NotEmpty
     protected Integer telefono;
-
+/*
     @NotEmpty
-    protected Imagen imagen;
-
-    @NotEmpty
+    protected Imagen imagen;  
+*/
+    @NotNull
     protected Boolean alta;
 
-    @NotEmpty
     protected Rol rol;
 }

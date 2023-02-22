@@ -6,7 +6,8 @@ import com.salud.sistema.enums.TipoConsulta;
 
 public class Profesional extends Usuario {
 
-    private Especialidad especialidad;
+    /*
+private Especialidad especialidad;
 
     private Horario horarios;
 
@@ -18,5 +19,6 @@ public class Profesional extends Usuario {
 
     private Integer matricula;
 
-    private Double calificacion;
+    private Double calificacion
+*/
 }
