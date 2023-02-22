@@ -19,18 +19,19 @@ public abstract class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
-    @NotEmpty
+    //@NotEmpty
     protected String nombre;
 
-    @NotEmpty
+   // @NotEmpty
     protected String apellido;
 
-    @NotEmpty
-    @Email
+    //@NotEmpty
+    //@Email
     protected String email;
 
-    @NotEmpty
+    /*
     protected String contrasenia;
+    */
 
     protected Integer dni;
 
@@ -39,7 +40,7 @@ public abstract class Usuario {
     @NotEmpty
     protected Imagen imagen;  
 */
-    @NotNull
+   // @NotNull
     protected Boolean alta;
 
     protected Rol rol;

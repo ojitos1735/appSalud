@@ -18,9 +18,9 @@ public class HistoriaClinica implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+   /* @OneToOne
     private Paciente paciente;
-/*
+
     private List<DetalleHC> detalles;
   
     private List<Profesional> profesionales;

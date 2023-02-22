@@ -30,14 +30,17 @@ public class PacienteServicio {
     private ObraSocialServicio servicioObraSocial;
     @Autowired
     private HistoriaClinicaRepositorio repoHistoriaClinica;
-
+    @Autowired
+    private HistoriaClinicaServicio servicioHC;
+    
     @Transactional
     public void crearPaciente(String nombre, String apellido, String email, /*String contrasenia,*/ Integer dni, Integer telefono, Long idObraSocial) throws MiExcepcion {
+        System.out.println("A");
         validarDatos(nombre, apellido, email, dni, telefono);
-        
+        System.out.println("B");
         Paciente paciente = new Paciente();
 
-        HistoriaClinica historiaClinica = new HistoriaClinica();
+        HistoriaClinica historiaClinica = servicioHC.crearHistoriaClinica();
 
         ObraSocial obraSocial = servicioObraSocial.buscarPorId(idObraSocial);
 
@@ -48,6 +51,7 @@ public class PacienteServicio {
         paciente.setDni(dni);
         paciente.setTelefono(telefono);
         paciente.setHistoriaClinica(historiaClinica);
+        System.out.println("C");
         paciente.setObraSocial(obraSocial);
 
         repoPaciente.save(paciente);

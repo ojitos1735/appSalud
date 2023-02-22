@@ -38,13 +38,16 @@ public class PacienteControlador {
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre, @RequestParam String apellido, @RequestParam String email, 
             /*@RequestParam String contrasenia,*/
-            @RequestParam Integer dni, @RequestParam Integer telefono, @PathVariable Long idOS, ModelMap modelo) {
+            @RequestParam Integer dni, @RequestParam Integer telefono, @RequestParam Long idOS, ModelMap modelo) {
         try {
+            System.out.println("X");
             pacienteServicio.crearPaciente(nombre, apellido, email, /*contrasenia,*/ dni, telefono, idOS);
+            System.out.println("Y");
             modelo.put("exito", "El paciente fue registrado exitosamente");
             return "redirect:/";
         } catch (MiExcepcion ex) {
             modelo.addAttribute("obrasSociales", obraSocialServicio.listarObrasSociales());
+            System.out.println("Z");
             modelo.put("error", ex.getMessage());
             return "paciente_form.html";
         }
