@@ -35,9 +35,7 @@ public class PacienteServicio {
     
     @Transactional
     public void crearPaciente(String nombre, String apellido, String email, /*String contrasenia,*/ Integer dni, Integer telefono, Long idObraSocial) throws MiExcepcion {
-        System.out.println("A");
         validarDatos(nombre, apellido, email, dni, telefono);
-        System.out.println("B");
         Paciente paciente = new Paciente();
 
         HistoriaClinica historiaClinica = servicioHC.crearHistoriaClinica();
@@ -51,7 +49,6 @@ public class PacienteServicio {
         paciente.setDni(dni);
         paciente.setTelefono(telefono);
         paciente.setHistoriaClinica(historiaClinica);
-        System.out.println("C");
         paciente.setObraSocial(obraSocial);
 
         repoPaciente.save(paciente);
@@ -65,7 +62,7 @@ public class PacienteServicio {
     }
 
     @Transactional
-    public void modificarPaciente(Long id, String nombre, String apellido, String email, Integer telefono, Long idObraSocial) throws MiExcepcion{
+    public void modificarPaciente(Long id, String nombre, String apellido, String email, Integer telefono/*, Long idObraSocial*/) throws MiExcepcion{
         Paciente paciente = repoPaciente.findById(id).get();
         if (paciente == null){
             throw new MiExcepcion("No se pudo encontrar el paciente");
@@ -75,8 +72,8 @@ public class PacienteServicio {
             paciente.setEmail(email);
             paciente.setTelefono(telefono);
            
-            ObraSocial obraSocial = repoObraSocial.findById(idObraSocial).get();
-            paciente.setObraSocial(obraSocial);
+           // ObraSocial obraSocial = repoObraSocial.findById(idObraSocial).get();
+           // paciente.setObraSocial(obraSocial);
             
             repoPaciente.save(paciente);
         }
@@ -86,6 +83,13 @@ public class PacienteServicio {
         return repoPaciente.getOne(id);
     }
 
+    @Transactional
+    public void borrarPaciente(Long id) throws MiExcepcion{
+        Paciente paciente = repoPaciente.getById(id);
+        paciente.setAlta(Boolean.FALSE);
+        repoPaciente.save(paciente);
+    }
+    
     private void validarDatos(String nombre, String apellido, String email, Integer dni, Integer telefono) throws MiExcepcion {
         if (nombre.isEmpty() || nombre == null) {
             throw new MiExcepcion("El nombre no puede estar vacio ni ser nulo");

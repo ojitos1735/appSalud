@@ -40,14 +40,11 @@ public class PacienteControlador {
             /*@RequestParam String contrasenia,*/
             @RequestParam Integer dni, @RequestParam Integer telefono, @RequestParam Long idOS, ModelMap modelo) {
         try {
-            System.out.println("X");
             pacienteServicio.crearPaciente(nombre, apellido, email, /*contrasenia,*/ dni, telefono, idOS);
-            System.out.println("Y");
             modelo.put("exito", "El paciente fue registrado exitosamente");
             return "redirect:/";
         } catch (MiExcepcion ex) {
             modelo.addAttribute("obrasSociales", obraSocialServicio.listarObrasSociales());
-            System.out.println("Z");
             modelo.put("error", ex.getMessage());
             return "paciente_form.html";
         }
@@ -71,11 +68,22 @@ public class PacienteControlador {
     public String modificar(@PathVariable Long id, String nombre, String apellido, String email,
             Integer telefono, Long idObraSocial, ModelMap modelo) {
         try {
-            pacienteServicio.modificarPaciente(id, nombre, apellido, email, telefono, idObraSocial);
+            pacienteServicio.modificarPaciente(id, nombre, apellido, email, telefono/*, idObraSocial*/);
             return "redirect:../listar";
         } catch (MiExcepcion ex) {
             modelo.put("error", ex.getMessage());
             return "paciente_modificar.html";
         }
+    }
+    
+    @PostMapping("/eliminar/{id}")
+    public String eliminar(@PathVariable("id") Long id, ModelMap modelo) {
+        try {
+            pacienteServicio.borrarPaciente(id);
+            modelo.put("exito", "El paciente fue eliminado exitosamente");
+        } catch (MiExcepcion ex) {
+            modelo.put("error", ex.getMessage());
+        }
+        return "redirect:/";
     }
 }

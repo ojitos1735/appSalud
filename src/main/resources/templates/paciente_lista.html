@@ -23,6 +23,7 @@
                         <th scope="col">Email</th>
                         <th scope="col">Teléfono</th>
                         <th scope="col">Obra Social</th>
+                        <th scope="col">Alta</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -33,8 +34,10 @@
                         <td th:text="${paciente.email}"></td>
                         <td th:text="${paciente.telefono}"></td>
                         <td th:text="${paciente.obraSocial.nombre}"></td>
+                        <td th:text="${paciente.alta}"></td>
                         <td>
                             <a th:href= "@{/paciente/modificar/__${paciente.id}__}"> Modificar </a>
+                            <a th:href= "@{/paciente/eliminar/__${paciente.id}__}"> Eliminar </a>
                         </td>
 
                     </tr>
