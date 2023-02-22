@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -76,7 +77,8 @@ public class PacienteControlador {
         }
     }
     
-    @PostMapping("/eliminar/{id}")
+
+    @RequestMapping(value="/eliminar/{id}",method={RequestMethod.GET,RequestMethod.DELETE})
     public String eliminar(@PathVariable("id") Long id, ModelMap modelo) {
         try {
             pacienteServicio.borrarPaciente(id);
