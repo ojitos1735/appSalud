@@ -2,6 +2,7 @@ package com.salud.sistema.entidades;
 
 
 import com.salud.sistema.enums.Dia;
+import java.util.Date;
 
 public class Horario {
 
