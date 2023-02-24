@@ -1,11 +1,12 @@
 package com.salud.sistema.entidades;
 
-//import java.util.List;
+import java.util.List;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.Data;
@@ -18,11 +19,13 @@ public class HistoriaClinica implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-   /* @OneToOne
+    @OneToOne
     private Paciente paciente;
 
+    @OneToMany
     private List<DetalleHC> detalles;
-  
+    
+    @OneToMany
     private List<Profesional> profesionales;
-    */
+    
 }

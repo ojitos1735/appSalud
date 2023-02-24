@@ -20,4 +20,5 @@ public interface PacienteRepositorio extends JpaRepository<Paciente, Long>{
     //Busca los pacientes por email
     @Query("SELECT p FROM Paciente p WHERE p.email = :email")
     public Paciente buscarPorEmail(@Param("email") String email);
+
 }

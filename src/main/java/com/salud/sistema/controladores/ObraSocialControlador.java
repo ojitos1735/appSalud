@@ -23,9 +23,9 @@ public class ObraSocialControlador {
     }
     
     @PostMapping("/registro")
-    public String registro(@RequestParam String nombre, ModelMap modelo) throws MiExcepcion{
+    public String registro(@RequestParam String nombreOS, ModelMap modelo) throws MiExcepcion{
         try {
-            obraSocialServicio.crearObraSocial(nombre);
+            obraSocialServicio.crearObraSocial(nombreOS);
             modelo.put("exito", "La obra social fue registrada exitosamente");
         } catch (MiExcepcion ex) {
 

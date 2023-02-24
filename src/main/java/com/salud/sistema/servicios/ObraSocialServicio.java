@@ -23,7 +23,7 @@ public class ObraSocialServicio {
     @Transactional
     public void crearObraSocial(String nombre) throws MiExcepcion{
         ObraSocial obraSocial = new ObraSocial();
-        obraSocial.setNombre(nombre);
+        obraSocial.setNombreOS(nombre);
         
         repoObraSocial.save(obraSocial);
     }
