@@ -1,6 +1,7 @@
 -------------------------------------------------------------------------------
 Test set: com.salud.sistema.SistemaApplicationTests
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 6.67 s <<< FAILURE! - in com.salud.sistema.SistemaApplicationTests
 contextLoads  Time elapsed: 0 s  <<< ERROR!
 java.lang.IllegalStateException: Failed to load ApplicationContext
@@ -9,3 +10,6 @@ Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Un
 Caused by: org.hibernate.exception.SQLGrammarException: Unable to open JDBC Connection for DDL execution
 Caused by: java.sql.SQLSyntaxErrorException: Unknown database 'sistema'
 
+=======
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.452 s - in com.salud.sistema.SistemaApplicationTests
+>>>>>>> 0de2be596fddb6073d2e2e84ce0dfd39fd0f7a80

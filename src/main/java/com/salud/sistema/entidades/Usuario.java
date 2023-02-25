@@ -2,26 +2,48 @@ package com.salud.sistema.entidades;
 
 
 import com.salud.sistema.enums.Rol;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import lombok.Data;
 
-class Usuario {
 
-    private Long id;
+@Data
+@MappedSuperclass
+public abstract class Usuario {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
 
-    private String nombre;
+    //@NotEmpty
+    protected String nombre;
 
-    private String apellido;
+   // @NotEmpty
+    protected String apellido;
 
-    private String email;
+    //@NotEmpty
+    //@Email
+    protected String email;
 
-    private String contrasenia;
+    /*
+    protected String contrasenia;
+    */
 
-    private Integer dni;
+    protected Integer dni;
 
-    private Integer telefono;
+    protected Integer telefono;
+/*
+    @NotEmpty
+    protected Imagen imagen;  
+*/
+   // @NotNull
+    protected Boolean alta;
 
-    private Imagen imagen;
-
-    private Boolean alta;
-
-    private Rol rol;
+    protected Rol rol;
 }
