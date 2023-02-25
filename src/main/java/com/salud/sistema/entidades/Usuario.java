@@ -3,7 +3,7 @@ package com.salud.sistema.entidades;
 
 import com.salud.sistema.enums.Rol;
 
-private class Usuario {
+class Usuario {
 
     private Long id;
 

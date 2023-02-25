@@ -1,5 +1,7 @@
 package com.salud.sistema.entidades;
 
+import java.util.List;
+
 public class HistoriaClinica {
 
     private Long id;
