@@ -19,7 +19,7 @@ public class ProfesionalServicio {
     @Autowired
     private ProfesionalRepositorio profesionalRepositorio;
 
-    @Transactional
+   /* @Transactional
     public void crear(
             String nombre,
             String apellido,
@@ -46,7 +46,8 @@ public class ProfesionalServicio {
         profesional.setAlta(Boolean.TRUE);
 
         profesionalRepositorio.save(profesional);
-    }
+    } 
+    */
 
     //buscar profesionales segun especialidad
     public List<Profesional> buscarProfesionalPorEspecialidad(Especialidad especialidad, String obraSocial)  {

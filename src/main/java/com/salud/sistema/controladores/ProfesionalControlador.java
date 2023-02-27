@@ -6,7 +6,7 @@ import com.salud.sistema.enums.Especialidad;
 import com.salud.sistema.enums.Rol;
 import com.salud.sistema.enums.TipoConsulta;
 import com.salud.sistema.excepciones.ProfesionalException;
-import com.salud.sistema.repositorios.ObraSocialRepository;
+import com.salud.sistema.repositorios.ObraSocialRepositorio;
 import com.salud.sistema.repositorios.ProfesionalRepositorio;
 import com.salud.sistema.servicios.ProfesionalServicio;
 import com.sun.org.apache.bcel.internal.generic.ARRAYLENGTH;
@@ -39,7 +39,7 @@ public class ProfesionalControlador {
     @Autowired
     private ProfesionalRepositorio profesionalRepositorio;
     @Autowired
-    ObraSocialRepository obraSocialRepository;
+    ObraSocialRepositorio obraSocialRepositorio;
 
     @GetMapping("/listarProfesionales") //localhost:8080/profesional/listarProfesionales
     public ResponseEntity<Object> listaProfesionales(@RequestParam(("especialidad")) Especialidad especialidad, @RequestParam(required = false) String obraSocial) throws ProfesionalException {
