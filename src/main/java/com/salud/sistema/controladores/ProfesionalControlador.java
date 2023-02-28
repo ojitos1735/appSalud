@@ -5,8 +5,8 @@ import com.salud.sistema.entidades.Profesional;
 import com.salud.sistema.enums.Especialidad;
 import com.salud.sistema.enums.Rol;
 import com.salud.sistema.enums.TipoConsulta;
-import com.salud.sistema.excepciones.ProfesionalException;
-import com.salud.sistema.repositorios.ObraSocialRepository;
+import com.salud.sistema.excepciones.MiExcepcion;
+
 import com.salud.sistema.repositorios.ProfesionalRepositorio;
 import com.salud.sistema.servicios.ProfesionalServicio;
 import com.sun.org.apache.bcel.internal.generic.ARRAYLENGTH;
@@ -28,6 +28,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import com.salud.sistema.repositorios.ObraSocialRepositorio;
+import java.time.LocalTime;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/profesional")
@@ -36,13 +41,12 @@ public class ProfesionalControlador {
     @Autowired
     private ProfesionalServicio profesionalServicio;
 
+    
     @Autowired
-    private ProfesionalRepositorio profesionalRepositorio;
-    @Autowired
-    ObraSocialRepository obraSocialRepository;
+    ObraSocialRepositorio obraSocialRepository;
 
     @GetMapping("/listarProfesionales") //localhost:8080/profesional/listarProfesionales
-    public ResponseEntity<Object> listaProfesionales(@RequestParam(("especialidad")) Especialidad especialidad, @RequestParam(required = false) String obraSocial) throws ProfesionalException {
+    public ResponseEntity<Object> listaProfesionales(@RequestParam(("especialidad")) Especialidad especialidad, @RequestParam(required = false) String obraSocial) throws MiExcepcion {
         List<Profesional> profesionales = new ArrayList<>();
         try {
             profesionales = profesionalServicio.buscarProfesionalPorEspecialidad(especialidad, obraSocial);
@@ -52,41 +56,39 @@ public class ProfesionalControlador {
 
         return  new ResponseEntity<>(profesionales,HttpStatus.OK);
     }
-/*
-    @PostMapping("/created")
-    public ResponseEntity<Object> createdProfesional(@RequestBody Profesional profesional) {
-        Profesional profe = new Profesional();
 
-        try {
-
-            profe.setNombre(profesional.getNombre());
-            profe.setApellido(profesional.getApellido());
-            profe.setContrasenia(profesional.getContrasenia());
-            profe.setCalificacion(profesional.getCalificacion());
-            profe.setDni(profesional.getDni());
-            profe.setEmail(profesional.getEmail());
-            profe.setId(profesional.getId());
-            profe.setMatricula(profesional.getMatricula());
-            profe.setRol(Rol.PROFESIONAL);
-            profe.setTelefono(profesional.getTelefono());
-            profe.setTipoConsulta(TipoConsulta.PRESENCIAL);
-            profe.setValorConsulta(profesional.getValorConsulta());
+    @PostMapping("/registro")
+    public String createdProfesional(@RequestBody Profesional profesional,ModelMap modelo) {
        
-            Set<ObraSocial> obraSocial=  StreamSupport.stream(obraSocialRepository.findAll().spliterator(),false)
-            .collect(Collectors.toSet());
-            profe.setCubreOS( obraSocial);
-
-            profe.setEspecialidad(Especialidad.GINECOLOGIA);
-            profe.setAlta(true);
-            profe.setHorarios(profesional.getHorarios());
-            profesionalRepositorio.save(profe);
-
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
+      try {
+          profesionalServicio.crearProfesional(profesional);
+            modelo.put("exito", "El Profesional fue registrado exitosamente");
+            return "redirect:/";
+    }catch(Exception e){
+    
+        return "profesional_form.html";
+    }
+    }
+      @RequestMapping(value="/eliminar/{id}",method={RequestMethod.GET,RequestMethod.DELETE})
+    public String eliminar(@PathVariable("id") Long id, ModelMap modelo) {
+        try {
+            profesionalServicio.bajaProfesional(id);
+            modelo.put("exito", "El profesional fue eliminado exitosamente");
+        } catch (MiExcepcion ex) {
+            modelo.put("error", ex.getMessage());
         }
-
-        return new ResponseEntity<>(profe, HttpStatus.CREATED);
-
-    }*/
-
+        return "redirect:/";
+    }
+    
+    @PutMapping("/modificar/{id}")
+    public String modificar(@PathVariable Long id,String descripcion,@RequestParam(required = false) Long[]obraSocialId,
+            float valorConsulta, ModelMap modelo) {
+        try {
+            profesionalServicio.modificarProfesional(id,descripcion, obraSocialId,valorConsulta);
+            return "redirect:../listar";
+        } catch (MiExcepcion ex) {
+            modelo.put("error", ex.getMessage());
+            return "profesional_modificar.html";
+        }
+    }
 }

@@ -1,49 +1,35 @@
 package com.salud.sistema.entidades;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import java.util.List;
+import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 import lombok.Data;
 
+@Data
 @Entity
+@Table(name = "ObraSocial")
+public class ObraSocial implements Serializable {
 
-public class ObraSocial {
-@Id
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+   // @NotEmpty
     private String nombreOS;
-@ManyToMany(fetch = FetchType.LAZY,mappedBy="cubreOS")
-private Set<Profesional> profesionales;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNombreOS() {
-        return nombreOS;
-    }
-
-    public void setNombreOS(String nombreOS) {
-        this.nombreOS = nombreOS;
-    }
-
-
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "cubreOS")
+    private Set<Profesional> profesionales;
 
     @Override
     public String toString() {
-        return "ObraSocial{" + "id=" + id + ", nombreOS=" + nombreOS +  '}';
+        return "ObraSocial{" + "id=" + id + ", nombreOS=" + nombreOS + '}';
     }
-
 
 }
