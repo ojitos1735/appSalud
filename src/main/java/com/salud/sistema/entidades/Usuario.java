@@ -37,9 +37,9 @@ public abstract class Usuario {
     //@Email
     protected String email;
 
-    /*
+    
     protected String contrasenia;
-     */
+    
     protected Integer dni;
 
     protected Integer telefono;

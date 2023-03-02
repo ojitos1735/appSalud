@@ -58,7 +58,7 @@ public class ProfesionalControlador {
     }
 
     @PostMapping("/registro")
-    public String createdProfesional(@RequestBody Profesional profesional,ModelMap modelo) {
+    public String createdProfesional(@RequestBody Profesional profesional ,ModelMap modelo) {
        
       try {
           profesionalServicio.crearProfesional(profesional);

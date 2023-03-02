@@ -24,6 +24,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -50,6 +51,7 @@ public class ProfesionalServicio {
     medico.setRol(Rol.PROFESIONAL);
     medico.setAlta(true);
     medico.setEspecialidad(profesional.getEspecialidad());
+   // medico.setContrasenia(new BCryptPasswordEncoder().encode(Contrasenia));
     profesionalRepositorio.save(medico);
     return medico;
     }
@@ -108,10 +110,9 @@ public class ProfesionalServicio {
         return profesional;
     }
     
-    /*public List<Turno> crearTurno(Turno turno){
-        Turno turnito= new Turno();
-        
-        return null;
-        
-    }*/
+  
 }
+/*if (contrasenia.isEmpty() || contrasenia == null || contrasenia.length() <= 5) {
+            throw new MiExcepcion("La contraseña no puede estar vacía, y debe tener más de 5 dígitos");
+        }
+*/

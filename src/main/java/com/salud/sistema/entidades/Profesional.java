@@ -27,6 +27,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 
@@ -60,6 +61,20 @@ public class Profesional extends Usuario  {
 
     public void setEspecialidad(Especialidad especialidad) {
         this.especialidad = especialidad;
+    }
+
+   public Profesional(String nombre, String apellido, String email, String contrasenia, Integer dni, Integer telefono){
+        super();
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        //this.contrasenia = contrasenia;
+        this.dni = dni;
+        this.telefono = telefono;
+        this.alta = true;
+    }
+
+    public Profesional() {
     }
    
 

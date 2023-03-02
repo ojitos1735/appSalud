@@ -1,5 +1,6 @@
 package com.salud.sistema.entidades;
 import com.salud.sistema.enums.Dia;
+import com.salud.sistema.enums.EstadoTurno;
 import com.salud.sistema.enums.TipoConsulta;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -27,11 +28,17 @@ public class Turno {
     @ManyToOne
     private Profesional profesional;
     
-    private LocalDate dia;
+    private Dia dia;
     
      private LocalTime hora;
    
      @Column(name= "Tipo_Consulta")
     private TipoConsulta tipoConsulta;
-
+     
+     
+    private boolean disponibilidad;
+     
+    private EstadoTurno estadoTurno;
+    
+    
 }
