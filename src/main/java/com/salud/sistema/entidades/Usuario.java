@@ -1,36 +1,23 @@
 package com.salud.sistema.entidades;
-
 import com.salud.sistema.enums.Rol;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToOne;
-
 import lombok.Data;
 
-@MappedSuperclass
+
 @Data
-
-//Con esto hago un join sin necesidad de generar ids en las entidades profesionales y pacientes,directamente cuando instancio 
-//un objeto profesional o pacientes,seteo sus atributos(nombre apellid,etc)y a la hora de hacer un save se me genera un id que correspondera al objeto seteado
-@Inheritance(strategy = InheritanceType.JOINED)
+@MappedSuperclass
 public abstract class Usuario {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     protected Long id;
 
     //@NotEmpty
     protected String nombre;
 
-    // @NotEmpty
+   // @NotEmpty
     protected String apellido;
 
     //@NotEmpty
@@ -40,14 +27,15 @@ public abstract class Usuario {
     
     protected String contrasenia;
     
+
     protected Integer dni;
 
     protected Integer telefono;
-    /*
+/*
     @NotEmpty
     protected Imagen imagen;  
-     */
-    // @NotNull
+*/
+   // @NotNull
     protected Boolean alta;
 
     protected Rol rol;

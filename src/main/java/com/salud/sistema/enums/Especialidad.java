@@ -1,9 +1,6 @@
 package com.salud.sistema.enums;
 
-
-
 public enum Especialidad {
 
-    CARDIOLOGIA, CLINICA, GINECOLOGIA, PEDIATRIA,
-  
+    CARDIOLOGIA, CLINICA, GINECOLOGIA, PEDIATRIA
 }

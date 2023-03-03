@@ -1,4 +1,5 @@
 package com.salud.sistema.entidades;
 
-public class Admin extends Usuario {
+/*public class Admin extends Usuario {
 }
+*/

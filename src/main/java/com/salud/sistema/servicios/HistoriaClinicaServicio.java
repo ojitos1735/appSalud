@@ -1,6 +1,6 @@
 
-package com.salud.sistema.servicios;
 
+package com.salud.sistema.servicios;
 
 import com.salud.sistema.entidades.HistoriaClinica;
 import com.salud.sistema.repositorios.HistoriaClinicaRepositorio;
@@ -17,4 +17,7 @@ public class HistoriaClinicaServicio {
         repoHistoriaClinica.save(historia);
         return historia;
     }
+
 }
+
+

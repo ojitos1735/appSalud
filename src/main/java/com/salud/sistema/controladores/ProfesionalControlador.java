@@ -1,23 +1,18 @@
 package com.salud.sistema.controladores;
 
-import com.salud.sistema.entidades.ObraSocial;
+
 import com.salud.sistema.entidades.Profesional;
 import com.salud.sistema.enums.Especialidad;
-import com.salud.sistema.enums.Rol;
-import com.salud.sistema.enums.TipoConsulta;
+
 import com.salud.sistema.excepciones.MiExcepcion;
 
 import com.salud.sistema.repositorios.ProfesionalRepositorio;
 import com.salud.sistema.servicios.ProfesionalServicio;
-import com.sun.org.apache.bcel.internal.generic.ARRAYLENGTH;
+
 import java.util.ArrayList;
-import java.util.HashSet;
+
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-import org.apache.coyote.http11.Http11AprProtocol;
-import org.aspectj.apache.bcel.classfile.Module;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.salud.sistema.repositorios.ObraSocialRepositorio;
-import java.time.LocalTime;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,9 +36,11 @@ public class ProfesionalControlador {
     @Autowired
     private ProfesionalServicio profesionalServicio;
 
-    
+   
+    private ProfesionalRepositorio profesionalRepositorio;
     @Autowired
-    ObraSocialRepositorio obraSocialRepository;
+    ObraSocialRepositorio obraSocialRepositorio;
+
 
     @GetMapping("/listarProfesionales") //localhost:8080/profesional/listarProfesionales
     public ResponseEntity<Object> listaProfesionales(@RequestParam(("especialidad")) Especialidad especialidad, @RequestParam(required = false) String obraSocial) throws MiExcepcion {
@@ -58,14 +55,14 @@ public class ProfesionalControlador {
     }
 
     @PostMapping("/registro")
-    public String createdProfesional(@RequestBody Profesional profesional ,ModelMap modelo) {
+    public String createdProfesional(@RequestParam String nombre,@RequestParam String apellido,@RequestParam Integer dni,@RequestParam String email,@RequestParam Integer matricula,@RequestParam Integer telefono,@RequestParam Especialidad especialidad,@RequestParam String contrasenia,ModelMap modelo) {
        
       try {
-          profesionalServicio.crearProfesional(profesional);
+          profesionalServicio.crearProfesional(nombre, apellido, dni, email, matricula, telefono, especialidad, contrasenia);
             modelo.put("exito", "El Profesional fue registrado exitosamente");
             return "redirect:/";
-    }catch(Exception e){
-    
+    }catch( MiExcepcion ex){
+       modelo.put("error", ex.getMessage());
         return "profesional_form.html";
     }
     }

@@ -21,8 +21,8 @@ public class ObraSocial implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-   // @NotEmpty
-    private String nombreOS;
+    //@NotEmpty
+     private String nombreOS;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "cubreOS")
     private Set<Profesional> profesionales;
