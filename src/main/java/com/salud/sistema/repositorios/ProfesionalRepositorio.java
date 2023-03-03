@@ -36,4 +36,7 @@ public interface ProfesionalRepositorio extends JpaRepository<Profesional,Long> 
   //query para buscar profesional segun nombre
   @Query("SELECT p FROM  Profesional p WHERE p.nombre = :nombre")
    public List<Profesional> buscarPorNombre(@Param("nombre")String nombre);
+   
+   @Query("SELECT p FROM Profesional p WHERE p.email = :email")
+    public Profesional buscarPorEmail(@Param("email") String email);
 }
