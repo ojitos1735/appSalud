@@ -21,6 +21,7 @@ public class ObraSocial implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     //@NotEmpty
      private String nombreOS;
 

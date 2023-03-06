@@ -3,7 +3,10 @@ import com.salud.sistema.enums.Rol;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+
 import javax.persistence.MappedSuperclass;
+
 import lombok.Data;
 
 
@@ -24,9 +27,9 @@ public abstract class Usuario {
     //@Email
     protected String email;
 
-    
     protected String contrasenia;
-    
+
+
 
     protected Integer dni;
 

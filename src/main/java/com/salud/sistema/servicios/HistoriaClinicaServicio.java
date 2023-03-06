@@ -1,5 +1,4 @@
 
-
 package com.salud.sistema.servicios;
 
 import com.salud.sistema.entidades.HistoriaClinica;
@@ -18,6 +17,6 @@ public class HistoriaClinicaServicio {
         return historia;
     }
 
-}
 
+}
 

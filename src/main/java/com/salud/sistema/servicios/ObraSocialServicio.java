@@ -1,5 +1,7 @@
 
+
 package com.salud.sistema.servicios;
+
 import com.salud.sistema.entidades.ObraSocial;
 import com.salud.sistema.excepciones.MiExcepcion;
 import com.salud.sistema.repositorios.ObraSocialRepositorio;
@@ -38,5 +40,4 @@ public class ObraSocialServicio {
             return null;
         }
     }
-
 }

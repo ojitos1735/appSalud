@@ -9,6 +9,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.Data;
 
+
 @Entity
 @Data
 @Table(name = "Paciente")
@@ -18,10 +19,12 @@ public class Paciente extends Usuario implements Serializable {
     private HistoriaClinica historiaClinica;
     
     @OneToOne
+
     private ObraSocial obraSocial;   
     @OneToMany
     private List<Profesional> profesionales;
 
+  
     public Paciente(){
         super();
         rol = Rol.PACIENTE;

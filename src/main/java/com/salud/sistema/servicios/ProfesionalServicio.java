@@ -30,6 +30,7 @@ public class ProfesionalServicio {
     @Autowired
     private ObraSocialRepositorio obraSocialRepositorio;
 
+
     @Transactional
     public Profesional crearProfesional(String nombre, String apellido, Integer dni, String email, Integer matricula, Integer telefono, Especialidad especialidad, String contrasenia) throws MiExcepcion {
         validar(nombre, apellido, email, dni, telefono, matricula, especialidad, contrasenia);
@@ -47,6 +48,7 @@ public class ProfesionalServicio {
         profesionalRepositorio.save(medico);
         return medico;
     }
+
 
     //buscar profesionales segun especialidad
     public List<Profesional> buscarProfesionalPorEspecialidad(Especialidad especialidad, String obraSocial) throws MiExcepcion {

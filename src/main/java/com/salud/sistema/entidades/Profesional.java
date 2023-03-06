@@ -3,7 +3,9 @@ package com.salud.sistema.entidades;
 import com.salud.sistema.enums.Especialidad;
 import com.salud.sistema.enums.Rol;
 import com.salud.sistema.enums.TipoConsulta;
+
 import java.util.List;
+
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,7 +23,8 @@ import lombok.Setter;
 @Setter
 public class Profesional extends Usuario {
 
-    //  @Column(name= "Especialidad")
+
+     @Column(name= "Especialidad")
     private Especialidad especialidad;
 
     private Float valorConsulta;
@@ -32,8 +35,10 @@ public class Profesional extends Usuario {
             inverseJoinColumns = @JoinColumn(name = "cubreos_id"))
 
     private List<ObraSocial> cubreOS;
+  
     @Column(name = "Tipo_Consulta")
     private TipoConsulta tipoConsulta;
+
 
     private Integer matricula;
 
@@ -52,6 +57,7 @@ public class Profesional extends Usuario {
     public void setEspecialidad(Especialidad especialidad) {
         this.especialidad = especialidad;
     }
+
 
     public Profesional(String nombre, String apellido, String email, String contrasenia, Integer dni, Integer telefono) {
         super();
@@ -73,5 +79,6 @@ public class Profesional extends Usuario {
         this.calificacion = calificacion;
         this.descripcion = descripcion;
     }
+
 
 }
