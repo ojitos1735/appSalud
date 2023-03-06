@@ -32,7 +32,9 @@ public class Turno {
     
     private Dia dia;
     
-     private LocalTime hora;
+     private LocalTime horainicio;
+     
+     private LocalTime horaFin;
    
      @Column(name= "Tipo_Consulta")
     private TipoConsulta tipoConsulta;

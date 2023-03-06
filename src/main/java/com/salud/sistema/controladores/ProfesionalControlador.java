@@ -43,15 +43,17 @@ public class ProfesionalControlador {
 
 
     @GetMapping("/listarProfesionales") //localhost:8080/profesional/listarProfesionales
-    public ResponseEntity<Object> listaProfesionales(@RequestParam(("especialidad")) Especialidad especialidad, @RequestParam(required = false) String obraSocial) throws MiExcepcion {
+    public String listaProfesionales(@RequestParam(("especialidad")) Especialidad especialidad, @RequestParam(required = false) String obraSocial,ModelMap modelo) throws MiExcepcion {
         List<Profesional> profesionales = new ArrayList<>();
         try {
             profesionales = profesionalServicio.buscarProfesionalPorEspecialidad(especialidad, obraSocial);
-        } catch (Exception e) {
+       modelo.addAttribute("profesionales", profesionales);
+        
+        } catch (MiExcepcion e) {
             e.getMessage();
         }
 
-        return  new ResponseEntity<>(profesionales,HttpStatus.OK);
+       return "profesional_lista.html";
     }
 
     @PostMapping("/registro")
