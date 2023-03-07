@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <header>
+        <nav class="container_nav">
+            <div class="navbar">
+                <ul>
+                    <li class="nav_li">
+                        <a href="../index.html">HOME</a>
+                    </li>
+                    <li class="nav_li">
+                        <a href="./registrarse.html">INGRESAR</a>
+                    </li>
+                </ul>
+            </div>            
+        </nav>
+    </header>
+
+    <main>    
+        <section class="container-flex-paciente">
+            <div class="formulario" >
+                <!--             <div th:if="${error != null}" id="mensajeError"  class="card text-white bg-danger mb-3 mensajeError">
+                                <div class="card-body">
+                                    <h5 class="card-title">ERROR</h5>
+                                    <p class="card-text" th:text="${error}"></p>
+                                </div>
+                            </div> -->
+                <h2 class="titulo-seccion">INGRESE SUS DATOS</h2>
+                <form class="form"
+                        th:action="@{/logincheck}"
+                        method="POST"
+                        id="formu"
+                        >
+                   
+                    <div class="label">
+                        <label class="subtitulo-label">Correo eléctronico</label>
+                        <input
+                            type="text"
+                            class="form-input"
+                            name="email"
+                            placeholder="Ingresar correo"
+                            />
+                    </div>
+                   
+    
+                    <div class="subtitulo-label">
+                        <label class="subtitulo-label">Contraseña</label>
+                        <input type="contraseña" class="form-input" name="contraseña" placeholder="Ingresar contraseña">
+                    </div>
+                   
+                 
+    
+                    <div class="btn-div">
+                        <button type="submit" class="btn" id="boton">
+                            ENTRAR
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    
+    
+</body>
+
+<footer>
+    <div class="container_footer">
+        <div>
+            <h6>© 2023 App Salud - Todos los derechos reservados. Términos y condiciones. Políticas de privacidad.</h6>
+        </div>
+</footer>
+
+</html>

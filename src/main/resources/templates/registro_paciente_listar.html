@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>Lista de pacientes</title>
+</head>
+<body>
+    <div class="container_paciente_listar">
+        <br>
+        <h1>Lista de pacientes</h1>
+        <br>
+        <table class="table_container_paciente">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Obra Social</th>
+                    <th scope="col">Alta</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody th:each="paciente: ${pacientes}"> 
+                <tr>
+                    <th scope="row" th:text="${paciente.nombre}"></th>
+                    <td th:text="${paciente.apellido}"></td>
+                    <td th:text="${paciente.email}"></td>
+                    <td th:text="${paciente.telefono}"></td>
+                    <td th:text="${paciente.obraSocial.nombreOS}"></td>
+                    <td th:text="${paciente.alta}"></td>
+                    <td>
+                        <a th:href= "@{/paciente/modificar/__${paciente.id}__}"> Modificar </a>
+                        <a th:href= "@{/paciente/eliminar/__${paciente.id}__}"> Eliminar </a>
+                    </td>
+        
+                </tr>
+        
+            </tbody>
+        </table>
+        
+        
+        
+        
+    </div>
+    
+</body>
+</html>
+
+</html>
