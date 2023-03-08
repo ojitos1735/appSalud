@@ -9,9 +9,9 @@ import com.salud.sistema.repositorios.ObraSocialRepositorio;
 import com.salud.sistema.repositorios.PacienteRepositorio;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -29,11 +29,16 @@ public class PacienteServicio {
     private HistoriaClinicaServicio servicioHC;
 
     @Transactional
+
     public void crearPaciente(String nombre, String apellido, String email,
             String contrasenia, String contrasenia2, Integer dni,
             Integer telefono, Long idObraSocial) throws MiExcepcion {
 
         validarDatos(nombre, apellido, email, contrasenia, contrasenia2, dni, telefono);
+
+    public void crearPaciente(String nombre, String apellido, String email, /*String contrasenia,*/ Integer dni, Integer telefono, Long idObraSocial) throws MiExcepcion {
+        validarDatos(nombre, apellido, email, dni, telefono);
+
         Paciente paciente = new Paciente();
 
         HistoriaClinica historiaClinica = servicioHC.crearHistoriaClinica();
@@ -43,7 +48,7 @@ public class PacienteServicio {
         paciente.setNombre(nombre);
         paciente.setApellido(apellido);
         paciente.setEmail(email);
-        paciente.setContrasenia(new BCryptPasswordEncoder().encode(contrasenia));
+        //paciente.setContrasenia(contrasenia);
         paciente.setDni(dni);
         paciente.setTelefono(telefono);
         paciente.setHistoriaClinica(historiaClinica);
@@ -60,7 +65,11 @@ public class PacienteServicio {
     }
 
     @Transactional
+
     public void modificarPaciente(Long id, String nombre, String apellido, String email, Integer telefono, Long idObraSocial) throws MiExcepcion {
+
+    public void modificarPaciente(Long id, String nombre, String apellido, String email, Integer telefono/*, Long idObraSocial*/) throws MiExcepcion{
+
         Paciente paciente = repoPaciente.findById(id).get();
         if (paciente == null) {
             throw new MiExcepcion("No se pudo encontrar el paciente");
@@ -70,9 +79,15 @@ public class PacienteServicio {
             paciente.setEmail(email);
             paciente.setTelefono(telefono);
 
+
             ObraSocial obraSocial = repoObraSocial.findById(idObraSocial).get();
 
             paciente.setObraSocial(obraSocial);
+
+   
+           // ObraSocial obraSocial = repoObraSocial.findById(idObraSocial).get();
+           // paciente.setObraSocial(obraSocial);
+            
 
             repoPaciente.save(paciente);
         }
@@ -89,8 +104,12 @@ public class PacienteServicio {
         repoPaciente.save(paciente);
     }
 
+
     private void validarDatos(String nombre, String apellido, String email, String contrasenia,
             String contrasenia2, Integer dni, Integer telefono) throws MiExcepcion {
+
+
+    
 
         if (nombre.isEmpty() || nombre == null) {
             throw new MiExcepcion("El nombre no puede estar vacio ni ser nulo");
@@ -98,11 +117,14 @@ public class PacienteServicio {
             throw new MiExcepcion("El nombre no puede tener menos de 3 letras");
         }
 
+
+
         if (apellido.isEmpty() || apellido == null) {
             throw new MiExcepcion("El apellido no puede estar vacio ni ser nulo");
         } else if (apellido.length() < 3) {
             throw new MiExcepcion("El apellido no puede tener menos de 3 letras");
         }
+
 
         if (email.isEmpty() || email == null) {
             throw new MiExcepcion("El email no puede estar vacio ni ser nulo");
@@ -121,6 +143,15 @@ public class PacienteServicio {
         }
 
         if (telefono == null || telefono < 1000000000 || telefono.toString().length() > 11) {
+
+        if (email.isEmpty() || email == null) {
+            throw new MiExcepcion("El email no puede estar vacio ni ser nulo");
+        }
+        if(dni == null || dni < 1000000) {
+            throw new MiExcepcion("Ingrese un número de dni válido");
+        }
+        if(telefono == null || telefono < 1000000000) {
+
             throw new MiExcepcion("Ingrese un número de teléfono válido");
         }
     }
