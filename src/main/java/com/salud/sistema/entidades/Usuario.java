@@ -1,12 +1,15 @@
 package com.salud.sistema.entidades;
+
+
 import com.salud.sistema.enums.Rol;
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-
 import javax.persistence.MappedSuperclass;
-
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 
@@ -25,11 +28,12 @@ public abstract class Usuario {
 
     //@NotEmpty
     //@Email
+    @Column(unique = true)
     protected String email;
 
+    
     protected String contrasenia;
-
-
+    
 
     protected Integer dni;
 

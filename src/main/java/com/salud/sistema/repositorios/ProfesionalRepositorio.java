@@ -11,7 +11,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 
-@Repository
 public interface ProfesionalRepositorio extends JpaRepository<Profesional,Long> {
 //query nativa para buscar profesional segun especialidad
   //@Query("SELECT p FROM  Profesional p WHERE p.especialidad = :especialidad ORDER BY p.valorConsulta ASC")
@@ -40,4 +39,8 @@ public interface ProfesionalRepositorio extends JpaRepository<Profesional,Long> 
    
     // @Query("SELECT p FROM  Profesional   WHERE p.id = :id")
     public Profesional findFirstById(Long id);
-}
+    
+    @Query("SELECT p FROM Profesional p WHERE p.email =email")
+    public Profesional buscarPorEmail(@Param("email")String email);
+    
+}     

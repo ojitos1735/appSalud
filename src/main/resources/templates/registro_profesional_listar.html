@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>Lista de pacientes</title>
+</head>
+<body  class="container_fondo">
+    <header>
+        <nav class="container_nav">
+            <div class="navbar">
+                <ul>
+                    <li class="nav_li">
+                        <a href="../index.html">HOME</a>
+                    </li>
+                    <li class="nav_li">
+                        <a href="./ingresar.html">INGRESAR</a>
+                    </li>
+                </ul>
+            </div>            
+        </nav>
+    </header>
+    <main>
+        <div class="container_paciente_listar">
+                <br>
+                <h1>Lista de pacientes</h1>
+                <br>
+                <table class="table_container_paciente">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Teléfono</th>
+                            <th scope="col">DNI</th>
+                            <th scope="col">Alta</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody th:each="profesional: ${profesionales}"> 
+                        <tr>
+                            <th scope="row" th:text="${profesional.nombre}"></th>
+                            <td th:text="${profesional.apellido}"></td>
+                            <td th:text="${profesional.email}"></td>
+                            <td th:text="${profesional.telefono}"></td>
+                            <td th:text="${profesional.DNI}"></td>
+                            <td th:text="${profesional.alta}"></td>
+                            <td>
+                                <a th:href= "@{/profesional/modificar/__${profesional.id}__}"> Modificar </a>
+                                <a th:href= "@{/profesional/eliminar/__${profesional.id}__}"> Eliminar </a>
+                            </td>
+                
+                        </tr>
+                
+                    </tbody>
+                </table>
+            </div>
+
+    </main>
+   
+</body>
+</html>
+
+</html>
