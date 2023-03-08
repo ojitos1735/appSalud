@@ -11,6 +11,9 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
@@ -25,28 +28,29 @@ public abstract class Usuario {
 
     protected Long id;
 
-    //@NotEmpty
+    @NotEmpty
     protected String nombre;
-    // @NotEmpty
+     @NotEmpty
     protected String apellido;
 
-    //@NotEmpty
-    //@Email
+    @NotEmpty
+    @Email
     protected String email;
 
-    /*
+    @NotEmpty
     protected String contrasenia;
-     */
+
+    @NotEmpty
     protected Integer dni;
 
-    protected Integer telefono;
-    /*
     @NotEmpty
+    protected Integer telefono;
+   /* @NotEmpty
     protected Imagen imagen;  
-     */
-    // @NotNull
+    */
     protected Boolean alta;
-
+    
+    @NotNull
     protected Rol rol;
 }
 
