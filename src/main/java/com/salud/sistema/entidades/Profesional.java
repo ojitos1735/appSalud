@@ -45,6 +45,7 @@ public class Profesional extends Usuario {
     private Double calificacion;
 
     private String descripcion;
+    private String contrasenia;
 
     public Profesional() {
        

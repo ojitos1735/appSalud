@@ -49,7 +49,7 @@ public class UsuarioServicio implements UserDetailsService {
 
         admin.setNombre(nombre);
         admin.setEmail(email);
-
+        
         admin.setContrasenia(new BCryptPasswordEncoder().encode(password));
 
         admin.setRol(Rol.ADMIN);
