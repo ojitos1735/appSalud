@@ -7,8 +7,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 @Data
@@ -20,10 +18,7 @@ public class Paciente extends Usuario implements Serializable {
     
     @OneToOne
     private ObraSocial obraSocial;
-    /*
-    @OneToMany
-    private List<Profesional> profesionales;
-*/
+
     public Paciente(){
         super();
         rol = Rol.PACIENTE;
@@ -35,7 +30,7 @@ public class Paciente extends Usuario implements Serializable {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
-        //this.contrasenia = contrasenia;
+        this.contrasenia = contrasenia;
         this.dni = dni;
         this.telefono = telefono;
         this.alta = true;

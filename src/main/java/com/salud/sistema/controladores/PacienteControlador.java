@@ -38,10 +38,10 @@ public class PacienteControlador {
 
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre, @RequestParam String apellido, @RequestParam String email, 
-            /*@RequestParam String contrasenia,*/
+            @RequestParam String contrasenia, @RequestParam String contrasenia2, 
             @RequestParam Integer dni, @RequestParam Integer telefono, @RequestParam Long idOS, ModelMap modelo) {
         try {
-            pacienteServicio.crearPaciente(nombre, apellido, email, /*contrasenia,*/ dni, telefono, idOS);
+            pacienteServicio.crearPaciente(nombre, apellido, email, contrasenia, contrasenia2, dni, telefono, idOS);
             modelo.put("exito", "El paciente fue registrado exitosamente");
             return "redirect:/";
         } catch (MiExcepcion ex) {
@@ -69,7 +69,7 @@ public class PacienteControlador {
     public String modificar(@PathVariable Long id, String nombre, String apellido, String email,
             Integer telefono, Long idObraSocial, ModelMap modelo) {
         try {
-            pacienteServicio.modificarPaciente(id, nombre, apellido, email, telefono/*, idObraSocial*/);
+            pacienteServicio.modificarPaciente(id, nombre, apellido, email, telefono, idObraSocial);
             return "redirect:../listar";
         } catch (MiExcepcion ex) {
             modelo.put("error", ex.getMessage());
