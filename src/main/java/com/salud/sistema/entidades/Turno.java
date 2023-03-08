@@ -18,7 +18,4 @@ public class Turno {
     @OneToOne
     private Profesional profesional;
 
-    @OneToOne
-    private Horario horario;
-
 }

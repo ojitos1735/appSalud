@@ -22,9 +22,6 @@ public class Profesional extends Usuario {
     //  @Column(name= "Especialidad")
     private Especialidad especialidad;
 
-    @OneToMany
-    private Set<Horario> horarios;
-
     private Float valorConsulta;
 
     @Column(name = "Tipo_Consulta")
