@@ -151,5 +151,5 @@ public class PacienteServicio {
             throw new MiExcepcion("Ingrese un número de teléfono válido");
         }
     }
-}
+    }
 }
