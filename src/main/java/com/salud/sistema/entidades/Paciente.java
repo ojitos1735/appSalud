@@ -1,5 +1,4 @@
 package com.salud.sistema.entidades;
-
 import com.salud.sistema.enums.Rol;
 import java.io.Serializable;
 import java.util.List;

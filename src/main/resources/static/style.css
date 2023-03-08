@@ -11,6 +11,11 @@ body{
     margin: 0;
 }
 
+main{
+  min-height:80vh;/*importante*/
+  position:relative;/*importante*/
+}
+
 header{
     justify-content: space-between;
     width: 100%;
@@ -48,10 +53,10 @@ nav ul li a{
 footer{
     background-color: rgb(54, 48, 48);
     margin: 0;
-    padding: 0;
     color: #fff;
     padding: 10px;
     text-align: center;
+    position: relative;
 }
 
 h1{
@@ -102,8 +107,8 @@ select {
 }
 
 .parallax{
-    background-image: url(img/medico.jpg);
-   background-repeat: no-repeat;
+    background-image: url("./assets/img/medico-medico-doctor-hombre.jpg");
+    background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
@@ -160,19 +165,21 @@ select {
   /* ----CREAR---- */
 
 
+
   .container-flex-paciente{
-    display: grid;
+    display: flex;
     place-content: center;
     width: 500px;
     justify-content:center;
     align-content: center;
+    align-items: center;
     background-color: #fff;
     padding: 20px;
     margin:50px;
     border-radius: 20px;
     height: auto;
     box-shadow: 5px 5px 10px rgba(136, 136, 136, 0.526);
-    
+        
 }
 
 .titulo-seccion{
@@ -265,5 +272,63 @@ select {
     box-shadow: 2px 2px 8px #888;
 }
 
+  /* ----TABLAS LISTAR---- */
+
+
+table.table_container_paciente {
+    border: 1px solid #1C6EA4;
+    background-color: #EEEEEE;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+  }
+  table.table_container_paciente td, table.table_container_paciente th {
+    border: 2px solid #AAAAAA;
+    padding: 3px 2px;
+  }
+  table.table_container_paciente tbody td {
+    font-size: 13px;
+  }
+  table.table_container_paciente tr:nth-child(even) {
+    background: #D0E4F5;
+  }
+  table.table_container_paciente thead {
+    background: #1C6EA4;
+    background: linear-gradient(to top, #1a4d8fc8, #0d3569);
+    border-bottom: 2px solid #444444;
+  }
+  table.table_container_paciente thead th {
+    font-size: 15px;
+    font-weight: bold;
+    color: #FFFFFF;
+    border-left: 3px solid #D0E4F5;
+  }
+  table.table_container_paciente thead th:first-child {
+    border-left: none;
+  }
+  
+  table.table_container_paciente tfoot {
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background: #D0E4F5;
+    background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+    background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+    background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+    border-top: 2px solid #444444;
+  }
+  table.table_container_paciente tfoot td {
+    font-size: 14px;
+  }
+  table.table_container_paciente tfoot .links {
+    text-align: right;
+  }
+  table.table_container_paciente tfoot .links a{
+    display: inline-block;
+    background: #1C6EA4;
+    color: #FFFFFF;
+    padding: 2px 8px;
+    border-radius: 5px;
+  }
 
 
