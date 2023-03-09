@@ -74,7 +74,7 @@ public class PortalControlador {
             return "redirect:/admin/dashboard";
         }
         
-           return "inicio.html";
+           return "index.html";
     }
 
 }

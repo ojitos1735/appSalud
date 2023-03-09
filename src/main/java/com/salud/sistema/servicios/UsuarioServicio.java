@@ -54,7 +54,7 @@ public class UsuarioServicio implements UserDetailsService {
 
         admin.setRol(Rol.ADMIN);
 
-        usuarioRepositorio.save(admin);
+        adminRepositorio.save(admin);
     }
 
     private void validar(String nombre, String email, String password, String password2) throws MiExcepcion {
