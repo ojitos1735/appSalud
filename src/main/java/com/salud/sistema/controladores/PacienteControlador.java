@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.salud.sistema.controladores;
 
 import com.salud.sistema.entidades.Paciente;
@@ -38,10 +33,10 @@ public class PacienteControlador {
 
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre, @RequestParam String apellido, @RequestParam String email, 
-            @RequestParam String contrasenia, @RequestParam String contrasenia2, 
+            @RequestParam String contrasenia,@RequestParam String contrasenia2,
             @RequestParam Integer dni, @RequestParam Integer telefono, @RequestParam Long idOS, ModelMap modelo) {
         try {
-            pacienteServicio.crearPaciente(nombre, apellido, email, contrasenia, contrasenia2, dni, telefono, idOS);
+            pacienteServicio.crearPaciente(nombre, apellido, email, contrasenia,contrasenia2, dni, telefono, idOS);
             modelo.put("exito", "El paciente fue registrado exitosamente");
             return "redirect:/";
         } catch (MiExcepcion ex) {
