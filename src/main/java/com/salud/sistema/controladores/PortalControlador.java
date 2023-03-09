@@ -24,16 +24,26 @@ public class PortalControlador {
 
     @GetMapping("/")
     public String index() {
+<<<<<<< HEAD
     return "index.html";
+=======
+
+        return "index.html";
+>>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
     }
 
     @GetMapping("/registrar")
     public String registrar() {
+<<<<<<< HEAD
     return "registrarse.html";
+=======
+        return "registro.html";
+>>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
     }
 
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String password,
+<<<<<<< HEAD
         @RequestParam String password2, ModelMap modelo, MultipartFile archivo) throws MiExcepcion {
 
         usuarioServicio.registrar(archivo,nombre, email, password, password2);
@@ -44,12 +54,39 @@ public class PortalControlador {
 
     @GetMapping("/login") //@RequestParam(required = false)
     public String login(@RequestParam String email, @RequestParam String contraseña, String error, ModelMap modelo ) {
+=======
+            String password2, ModelMap modelo, MultipartFile archivo) {
+
+        try {
+            
+            usuarioServicio.registrar(archivo,nombre, email, password, password2);
+            modelo.put("exito", "Usuario registrado correctamente!");
+            
+            return "index.html";
+        } catch (MiExcepcion ex) {
+            
+            modelo.put("error", ex.getMessage());
+            modelo.put("nombre", nombre);
+            modelo.put("email", email);
+
+            return "registro.html";
+        }
+
+    }
+
+    @GetMapping("/login")
+    public String login(@RequestParam(required = false) String error, ModelMap modelo ) {
+>>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
 
         if (error != null) {
             modelo.put("error", "Usuario o Contraseña invalidos!");
         }
 
+<<<<<<< HEAD
         return "ingresar.html";
+=======
+        return "login.html";
+>>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")

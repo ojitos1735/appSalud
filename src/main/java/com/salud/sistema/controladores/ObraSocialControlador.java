@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
 package com.salud.sistema.controladores;
 
 import com.salud.sistema.excepciones.MiExcepcion;
@@ -13,17 +17,29 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/obrasocial")
 public class ObraSocialControlador {
+<<<<<<< HEAD
 
     @Autowired
     private ObraSocialServicio obraSocialServicio;
 
+=======
+    @Autowired
+    private ObraSocialServicio obraSocialServicio;
+     
+>>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
     @GetMapping("/registrar")  //localhost:8080/obrasocial/registrar
     public String registrar() {
         return "obrasocial_form.html";
     }
+<<<<<<< HEAD
 
     @PostMapping("/registro")
     public String registro(@RequestParam String nombreOS, ModelMap modelo) throws MiExcepcion {
+=======
+    
+    @PostMapping("/registro")
+    public String registro(@RequestParam String nombreOS, ModelMap modelo) throws MiExcepcion{
+>>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
         try {
             obraSocialServicio.crearObraSocial(nombreOS);
             modelo.put("exito", "La obra social fue registrada exitosamente");
@@ -35,6 +51,9 @@ public class ObraSocialControlador {
 
         return "index.html";
     }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
 }

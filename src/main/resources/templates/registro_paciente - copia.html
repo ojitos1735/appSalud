@@ -7,11 +7,7 @@
 	<link rel="stylesheet" href="../style.css">
     <title>Registro de Pacientes</title>
 </head>
-<<<<<<< HEAD
-<body>
-=======
 <body  class="container_fondo">
->>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
 
     <header>
         <nav class="container_nav">
@@ -27,23 +23,13 @@
             </div>            
         </nav>
     </header>
-    
-	<main>    
+
+	<main>
 		<section class="container-flex-paciente">
 			<div class="formulario" >
-				<!--             <div th:if="${error != null}" id="mensajeError"  class="card text-white bg-danger mb-3 mensajeError">
-								<div class="card-body">
-									<h5 class="card-title">ERROR</h5>
-									<p class="card-text" th:text="${error}"></p>
-								</div>
-							</div> -->
 				<h2 class="titulo-seccion">CARGUE SUS DATOS</h2>
 				<form class="form"
-<<<<<<< HEAD
 						th:action="@{//paciente/registro}"
-=======
-						th:action="@{//profesional/registro}"
->>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
 						method="POST"
 						enctype="multipart/form-data"
 						id="formu"
@@ -74,56 +60,58 @@
 							type="text"
 							class="form-input"
 							name="email"
-							placeholder="ingresar Email"
+							placeholder="Ingresar Email"
 							th:value="${email}"
 							/>
-					</div>
-					<div class="label">
-						<label class="subtitulo-label">DNI: </label>
-						<input
+						</div>
+						<div class="label">
+							<label class="subtitulo-label">DNI: </label>
+							<input
 							type="text"
 							class="form-input"
 							name="DNI"
 							placeholder="Ingresar DNI"
 							th:value="${Dni}"
 							/>
-					</div>
-					<div class="label">
-						<label class="subtitulo-label">Telefono</label>
-						<input
+						</div>
+						<div class="label">
+							<label class="subtitulo-label">Telefono</label>
+							<input
 							type="text"
 							class="form-input"
 							name="telefono"
-							placeholder="ingrese telefono"
+							placeholder="Ingrese telefono"
 							th:value="${telefono}"
 							/>
-					</div>
-<<<<<<< HEAD
-	
-					<div class="label">
-						<label class="subtitulo-label" >Obra Social</label>
-						<select name="idOS" class="select-crear">
-							<option>Seleccionar Obra Social</option>
-							<option 
-							th:each="obraSocial : ${obrasSociales}"
-							th:value="${obraSocial.id}"
-							th:text="${obraSocial.nombreOS}"
-							/>
-						</select>
-					</div>
-					
-=======
-				
->>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
+						</div>
+						
+						<div class="label">
+							<label class="subtitulo-label" >Obra Social</label>
+							<select name="idOS" class="select-crear">
+								<option>Seleccionar Obra Social</option>
+								<option 
+								th:each="obraSocial : ${obrasSociales}"
+								th:value="${obraSocial.id}"
+								th:text="${obraSocial.nombreOS}"
+								/>
+							</select>
+						</div>
+						
+						<div th:if="${error != null}" id="mensajeError"  class="error">
+							  <div class="card-body">
+								  <h5 class="card-title">ERROR</h5>
+								  <p class="card-text" th:text="${error}"></p>
+							  </div>
+						  </div> 
 					<div class="btn-div">
 						<button type="submit" class="btn" id="boton">
+                            <a href=""></a>
 							REGISTRAR
 						</button>
 					</div>
 				</form>
 			</div>
 		</section>
-
 	</main>
 
     <footer>

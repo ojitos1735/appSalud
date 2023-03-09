@@ -11,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 
+<<<<<<< HEAD
 @Repository
 public interface ProfesionalRepositorio extends JpaRepository<Profesional,Long> {
 //query nativa para buscar profesional segun especialidad
@@ -19,6 +20,15 @@ public interface ProfesionalRepositorio extends JpaRepository<Profesional,Long> 
     
     //query jpa para buscar profesional segun especialidad con findby
     public List<Profesional> findByEspecialidad(Especialidad especialidad);
+=======
+public interface ProfesionalRepositorio extends JpaRepository<Profesional,Long> {
+//query nativa para buscar profesional segun especialidad
+  //@Query("SELECT p FROM  Profesional p WHERE p.especialidad = :especialidad ORDER BY p.valorConsulta ASC")
+  //public List<Profesional> buscarPorEspecialidad(@Param("especialidad")String especialidad);
+    
+    //query jpa para buscar profesional segun especialidad con findby
+    public List<Profesional> findByEspecialidadOrderByValorConsultaAsc(Especialidad especialidad);
+>>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
      
      //query que busca profesionales segun obra social y especialidad
     //@Query("SELECT p FROM Profesional p JOIN p.cubreOS os WHERE os.nombreOS = :obraSocial AND p.especialidad= :especialidad")
@@ -36,4 +46,19 @@ public interface ProfesionalRepositorio extends JpaRepository<Profesional,Long> 
   //query para buscar profesional segun nombre
   @Query("SELECT p FROM  Profesional p WHERE p.nombre = :nombre")
    public List<Profesional> buscarPorNombre(@Param("nombre")String nombre);
+<<<<<<< HEAD
 }
+=======
+
+   
+   
+    // @Query("SELECT p FROM  Profesional   WHERE p.id = :id")
+    public Profesional findFirstById(Long id);
+    
+    @Query("SELECT p FROM Profesional p WHERE p.email =email")
+    public Profesional buscarPorEmail(@Param("email")String email);
+    
+}    
+
+
+>>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119

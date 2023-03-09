@@ -36,7 +36,11 @@ public class Paciente extends Usuario implements Serializable {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
+<<<<<<< HEAD
         this.contrasenia = contrasenia;
+=======
+        //this.contrasenia = contrasenia;
+>>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
         this.dni = dni;
         this.telefono = telefono;
         this.alta = true;

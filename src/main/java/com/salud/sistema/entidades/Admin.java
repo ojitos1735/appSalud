@@ -1,6 +1,7 @@
 package com.salud.sistema.entidades;
 
 import com.salud.sistema.enums.Rol;
+<<<<<<< HEAD
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -69,3 +70,20 @@ public class Admin extends Usuario {
     }
 
     }
+=======
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import lombok.Data;
+
+@Entity
+@Data
+public class Admin extends Usuario implements Serializable {
+
+    public Admin() {
+        super();
+        rol = Rol.ADMIN;
+    }
+}
+>>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
