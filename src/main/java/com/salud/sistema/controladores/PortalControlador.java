@@ -28,8 +28,8 @@ public class PortalControlador {
     }
 
     @GetMapping("/registrar")
-    public String registrar(ModelMap modelo) {
-    return "registro.html";
+    public String registrar() {
+    return "registrarse.html";
     }
 
     @PostMapping("/registro")
