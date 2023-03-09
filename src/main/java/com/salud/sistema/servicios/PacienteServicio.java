@@ -63,10 +63,7 @@ public class PacienteServicio {
     }
 
     @Transactional
-
-    public void modificarPaciente(Long id, String nombre, String apellido, String email, Integer telefono, Long idObraSocial) throws MiExcepcion {
-
- 
+    public void modificarPaciente(Long id, String nombre, String apellido, String email, Integer telefono/*, Long idObraSocial*/) throws MiExcepcion{
         Paciente paciente = repoPaciente.findById(id).get();
         if (paciente == null) {
             throw new MiExcepcion("No se pudo encontrar el paciente");
@@ -75,15 +72,9 @@ public class PacienteServicio {
             paciente.setApellido(apellido);
             paciente.setEmail(email);
             paciente.setTelefono(telefono);
-
-
-            ObraSocial obraSocial = repoObraSocial.findById(idObraSocial).get();
-
-            paciente.setObraSocial(obraSocial);
-
-   
-           // ObraSocial obraSocial = repoObraSocial.findById(idObraSocial).get();
-           // paciente.setObraSocial(obraSocial);
+           
+            //ObraSocial obraSocial = repoObraSocial.findById(idObraSocial).get();
+            //paciente.setObraSocial(obraSocial);
             
 
             repoPaciente.save(paciente);
@@ -138,17 +129,8 @@ public class PacienteServicio {
         if (dni == null || dni < 10000000 || dni > 100000000) {
             throw new MiExcepcion("Ingrese un número de dni válido");
         }
-
-        if (telefono == null || telefono < 1000000000 || telefono.toString().length() > 11) {
-
-        if (email.isEmpty() || email == null) {
-            throw new MiExcepcion("El email no puede estar vacio ni ser nulo");
-        }
-        if(dni == null || dni < 1000000) {
-            throw new MiExcepcion("Ingrese un número de dni válido");
-        }
+        
         if(telefono == null || telefono < 1000000000) {
-
             throw new MiExcepcion("Ingrese un número de teléfono válido");
         }
     }

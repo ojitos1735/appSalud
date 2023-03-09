@@ -28,7 +28,7 @@ public class PacienteControlador {
     @GetMapping("/registrar")  //localhost:8080/paciente/registrar
     public String registrar(ModelMap modelo) {
         modelo.addAttribute("obrasSociales", obraSocialServicio.listarObrasSociales());
-        return "paciente_form.html";
+        return "registro_paciente.html";
     }
 
     @PostMapping("/registro")
@@ -42,7 +42,7 @@ public class PacienteControlador {
         } catch (MiExcepcion ex) {
             modelo.addAttribute("obrasSociales", obraSocialServicio.listarObrasSociales());
             modelo.put("error", ex.getMessage());
-            return "paciente_form.html";
+            return "registro_paciente.html";
         }
     }
     
@@ -50,25 +50,26 @@ public class PacienteControlador {
     public String listar(ModelMap modelo) {
         List<Paciente> pacientes = pacienteServicio.listarPacientes();
         modelo.addAttribute("pacientes", pacientes);
-        return "paciente_lista.html";
+        return "registro_paciente_listar.html";
     }
 
     @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable Long id, ModelMap modelo) {
+        modelo.addAttribute("obrasSociales", obraSocialServicio.listarObrasSociales());
         modelo.put("paciente", pacienteServicio.getOne(id));
 
-        return "paciente_modificar.html";
+        return "registro_paciente_modificar.html";
     }
 
     @PostMapping("/modificar/{id}")
     public String modificar(@PathVariable Long id, String nombre, String apellido, String email,
-            Integer telefono, Long idObraSocial, ModelMap modelo) {
+            Integer telefono/*, Long idObraSocial*/, ModelMap modelo) {
         try {
-            pacienteServicio.modificarPaciente(id, nombre, apellido, email, telefono, idObraSocial);
-            return "redirect:../listar";
+            pacienteServicio.modificarPaciente(id, nombre, apellido, email, telefono /*, idObraSocial*/);
+            return "redirect:/";
         } catch (MiExcepcion ex) {
             modelo.put("error", ex.getMessage());
-            return "paciente_modificar.html";
+            return "registro_paciente_modificar.html";
         }
     }
     
