@@ -31,12 +31,11 @@ public class PacienteServicio {
     @Transactional
 
     public void crearPaciente(String nombre, String apellido, String email,
-            String contrasenia, String contrasenia2, Integer dni,
+            String contrasenia,String contrasenia2, Integer dni,
             Integer telefono, Long idObraSocial) throws MiExcepcion {
 
         validarDatos(nombre, apellido, email, contrasenia, contrasenia2, dni, telefono);
 
- 
         Paciente paciente = new Paciente();
 
         HistoriaClinica historiaClinica = servicioHC.crearHistoriaClinica();
@@ -46,7 +45,7 @@ public class PacienteServicio {
         paciente.setNombre(nombre);
         paciente.setApellido(apellido);
         paciente.setEmail(email);
-        //paciente.setContrasenia(contrasenia);
+        paciente.setContrasenia(contrasenia);
         paciente.setDni(dni);
         paciente.setTelefono(telefono);
         paciente.setHistoriaClinica(historiaClinica);
@@ -64,6 +63,7 @@ public class PacienteServicio {
 
     @Transactional
     public void modificarPaciente(Long id, String nombre, String apellido, String email, Integer telefono/*, Long idObraSocial*/) throws MiExcepcion{
+
         Paciente paciente = repoPaciente.findById(id).get();
         if (paciente == null) {
             throw new MiExcepcion("No se pudo encontrar el paciente");
@@ -134,6 +134,5 @@ public class PacienteServicio {
             throw new MiExcepcion("Ingrese un número de teléfono válido");
         }
     }
-
     }
 }
