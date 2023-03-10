@@ -6,6 +6,7 @@ import com.salud.sistema.entidades.Usuario;
 import com.salud.sistema.enums.Rol;
 import com.salud.sistema.excepciones.MiExcepcion;
 import com.salud.sistema.repositorios.AdminRepositorio;
+import com.salud.sistema.repositorios.ImagenRepositorio;
 import com.salud.sistema.repositorios.PacienteRepositorio;
 import com.salud.sistema.repositorios.ProfesionalRepositorio;
 import com.salud.sistema.repositorios.UsuarioRepositorio;
@@ -42,6 +43,9 @@ public class UsuarioServicio implements UserDetailsService {
     @Autowired
     private ProfesionalRepositorio profesionalRepositorio;
 
+    @Autowired
+    private ImagenServicio imagenServicio;
+    
     @Transactional
     public void registrar(MultipartFile archivo, String nombre, String email, String password, String password2) throws MiExcepcion {
 
@@ -54,9 +58,9 @@ public class UsuarioServicio implements UserDetailsService {
         
         admin.setContrasenia(new BCryptPasswordEncoder().encode(password));
 
-        Imagen imagen = ImagenServicio.guardar(archivo);
+        Imagen imagen = imagenServicio.guardar(archivo);
                 
-        usuario.setImagen(imagen);
+        admin.setImagen(imagen);
 
         admin.setRol(Rol.ADMIN);
 
@@ -64,14 +68,14 @@ public class UsuarioServicio implements UserDetailsService {
     }
     
     @Transactional
-    public void actualizar(MultipartFile archivo, String idUsuario, String nombre, String email, String contrasenia, String contrasenia2) throws MiException {
+    public void actualizar(MultipartFile archivo, String idUsuario, String nombre, String email, String contrasenia, String contrasenia2) throws MiExcepcion {
 
         validar(nombre, email, contrasenia, contrasenia2);
 
-        Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
-        if (respuesta.isPresent()) {
+        Usuario respuesta = buscarUsuarioPorEmail(email);
+        if (respuesta !=null) {
 
-            Usuario usuario = respuesta.get();
+            Usuario usuario = respuesta;
             usuario.setNombre(nombre);
             usuario.setEmail(email);
 
@@ -94,10 +98,7 @@ public class UsuarioServicio implements UserDetailsService {
 
     }
     
-    public Usuario getOne(String id){
-        return usuarioRepositorio.getOne(id);
-    }
-
+    
     private void validar(String nombre, String email, String password, String password2) throws MiExcepcion {
 
         if (nombre.isEmpty() || nombre == null) {

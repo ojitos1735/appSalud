@@ -41,9 +41,10 @@ public abstract class Usuario {
 
     protected Integer telefono;
     
+    @OneToOne
     protected Imagen imagen;
     
-//     @OneToOne
+     
 //    private Imagen imagen;
 //
 //    public Imagen getImagen() {

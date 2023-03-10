@@ -32,7 +32,7 @@ public class ImagenControlador {
     
     @GetMapping("/perfil/{id}")
     public ResponseEntity<byte[]> imagenUsuario (@PathVariable String id){
-        Usuario usuario = usuarioServicio.getOne(id);
+        Usuario usuario = usuarioServicio.buscarUsuarioPorEmail(id);
         
        byte[] imagen= usuario.getImagen().getContenido();
        
