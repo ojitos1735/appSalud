@@ -90,6 +90,39 @@
 							th:value="${telefono}"
 							/>
 					</div>
+                                        <div class="label">
+						<label class="subtitulo-label">Matricula</label>
+						<input
+							type="text"
+							class="form-input"
+							name="matricula"
+							placeholder="ingrese matricula"
+							th:value="${matricula}"
+							/>
+					</div>
+                                        <div class="label">
+						<label class="subtitulo-label">Descripción</label>
+						<input
+							type="text"
+							class="form-input"
+							name="descripcion"
+							placeholder="ingrese descripción"
+							th:value="${descripcion}"
+							/>
+					</div>
+                                        <div class="label">
+						<label class="subtitulo-label" >Tipo de consulta</label>
+						<select name="idOS" class="select-crear">
+							<option>Seleccionar tipo de consulta</option>
+							<option value="presencial">Presencial</option>
+                                                        <option value="teleconsulta">Teleconsulta</option>
+						</select>
+					</div>
+                                    
+                                        <div class="subtitulo-label">
+                                                <label class="subtitulo-label">Foto</label>
+                                                <input type="file" class="form-input" name="archivo" >
+                                        </div>
 				
 					<div class="btn-div">
 						<button type="submit" class="btn" id="boton">
