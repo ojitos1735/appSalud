@@ -62,8 +62,6 @@ public class UsuarioServicio implements UserDetailsService {
                 
         admin.setImagen(imagen);
 
-        admin.setRol(Rol.ADMIN);
-
         adminRepositorio.save(admin);
     }
     
@@ -80,8 +78,6 @@ public class UsuarioServicio implements UserDetailsService {
             usuario.setEmail(email);
 
             usuario.setContrasenia(new BCryptPasswordEncoder().encode(contrasenia));
-            
-            usuario.setRol(Rol.ADMIN);
          
             String idImagen = null;
             

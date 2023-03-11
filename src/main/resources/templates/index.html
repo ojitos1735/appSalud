@@ -15,7 +15,7 @@
             <div class="navbar">
                 <ul>
                     <li class="nav_li">
-                        <a href="/registrarse">REGISTRARSE</a>
+                        <a th:href="@{/paciente/registrar}">REGISTRARSE</a>
                     </li>
                     <li class="nav_li">
                         <a href="/ingresar">INGRESAR</a>
@@ -40,12 +40,14 @@
                             <option value="pediatria">PEDIATRIA</option>
                         </select>
                         <label for="esp">Obra Social</label>
-                        <select name="obraSocial" id="selecOS">
-                            <option value="osep">OSEP</option>
-                            <option value="osde">OSDE</option>
-                            <option value="osecac">OSECAC</option>
-                            <option value="swissMedical">SWISS MEDICAL</option>
-                        </select>
+                        <select name="idOS" class="select-crear">
+							<option>Seleccionar Obra Social</option>
+							<option 
+							th:each="obraSocial : ${obrasSociales}"
+							th:value="${obraSocial.id}"
+							th:text="${obraSocial.nombreOS}"
+							/>
+						</select>
                         <input type="button" value="Buscar">
                     </form>
                 </div>
