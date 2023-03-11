@@ -95,24 +95,18 @@ public class PacienteServicio {
 
     private void validarDatos(String nombre, String apellido, String email, String contrasenia,
             String contrasenia2, Integer dni, Integer telefono) throws MiExcepcion {
-
-
-    
-
+        
         if (nombre.isEmpty() || nombre == null) {
             throw new MiExcepcion("El nombre no puede estar vacio ni ser nulo");
         } else if (nombre.length() < 3) {
             throw new MiExcepcion("El nombre no puede tener menos de 3 letras");
         }
 
-
-
         if (apellido.isEmpty() || apellido == null) {
             throw new MiExcepcion("El apellido no puede estar vacio ni ser nulo");
         } else if (apellido.length() < 3) {
             throw new MiExcepcion("El apellido no puede tener menos de 3 letras");
         }
-
 
         if (email.isEmpty() || email == null) {
             throw new MiExcepcion("El email no puede estar vacio ni ser nulo");
@@ -136,4 +130,3 @@ public class PacienteServicio {
     }
 
     }
-}

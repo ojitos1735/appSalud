@@ -110,4 +110,15 @@ public class UsuarioServicio implements UserDetailsService {
         } 
         return usuario;
     }
+    
+    public Usuario buscarUsuarioPorId(Long id) {
+        Usuario usuario = pacienteRepositorio.buscarPorId(id);
+        if (usuario == null) {
+            usuario = profesionalRepositorio.buscarPorId(id);
+            if (usuario == null) {
+                usuario = adminRepositorio.buscarPorId(id);
+            }
+        } 
+        return usuario;
+    }
 }

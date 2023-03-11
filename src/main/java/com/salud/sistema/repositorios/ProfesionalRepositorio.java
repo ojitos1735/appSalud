@@ -44,6 +44,8 @@ public interface ProfesionalRepositorio extends JpaRepository<Profesional,Long> 
     @Query("SELECT p FROM Profesional p WHERE p.email =email")
     public Profesional buscarPorEmail(@Param("email")String email);
     
+    @Query("SELECT p FROM Profesional p WHERE p.id = :id")
+    public Profesional buscarPorId(@Param("id") Long id);
 }    
 
 
