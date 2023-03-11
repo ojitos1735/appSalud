@@ -1,23 +1,62 @@
 package com.salud.sistema.entidades;
+
+
+import javax.persistence.Basic;
 import javax.persistence.Entity;
-
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import lombok.Data;
-
+import javax.persistence.Lob;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Data
-
 public class Imagen {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
+    
+    private String mime;
+    
+    private String nombre;
+    
+    @Lob @Basic(fetch = FetchType.LAZY)
+    private byte[] contenido;
 
-    private Long id;
+    public Imagen() {
+    }
 
-    private String titulo;
+    public String getId() {
+        return id;
+    }
 
-    private String textoAlter;
+    public void setId(String id) {
+        this.id = id;
+    }
 
+    public String getMime() {
+        return mime;
+    }
+
+    public void setMime(String mime) {
+        this.mime = mime;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public byte[] getContenido() {
+        return contenido;
+    }
+
+    public void setContenido(byte[] contenido) {
+        this.contenido = contenido;
+    }
+    
+    
 }

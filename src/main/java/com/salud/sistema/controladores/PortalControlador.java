@@ -28,9 +28,9 @@ public class PortalControlador {
         return "index.html";
     }
 
-    @GetMapping("/registrar")
+    @GetMapping("/registrarse")
     public String registrar() {
-        return "registro.html";
+        return "registro_paciente.html";
     }
 
     @PostMapping("/registro")
@@ -49,19 +49,19 @@ public class PortalControlador {
             modelo.put("nombre", nombre);
             modelo.put("email", email);
 
-            return "registro.html";
+            return "registro_paciente.html";
         }
 
     }
 
-    @GetMapping("/login")
+    @GetMapping("/ingresar")
     public String login(@RequestParam(required = false) String error, ModelMap modelo ) {
 
         if (error != null) {
             modelo.put("error", "Usuario o Contraseña invalidos!");
         }
 
-        return "login.html";
+        return "ingresar.html";
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")

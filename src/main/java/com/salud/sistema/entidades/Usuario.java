@@ -11,6 +11,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotEmpty;
 
 import lombok.Data;
 
@@ -34,19 +35,28 @@ public abstract class Usuario {
     //@Email
     protected String email;
 
-
     protected String contrasenia;
- 
+    
     protected Integer dni;
 
     protected Integer telefono;
-    /*
-    @NotEmpty
-    protected Imagen imagen;  
-     */
+    
+    @OneToOne
+    protected Imagen imagen;
+    
+     
+//    private Imagen imagen;
+//
+//    public Imagen getImagen() {
+//        return imagen;
+//    }
+//
+//    public void setImagen(Imagen imagen) {
+//        this.imagen = imagen;
+//    }
+ 
     // @NotNull
     protected Boolean alta;
 
     protected Rol rol;
 }
-
