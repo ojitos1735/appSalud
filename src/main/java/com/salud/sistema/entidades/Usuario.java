@@ -4,11 +4,10 @@ import com.salud.sistema.enums.Rol;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
@@ -33,12 +32,15 @@ public abstract class Usuario {
      @NotEmpty
     protected String apellido;
 
+
     @NotEmpty
     @Email
     protected String email;
 
     @NotEmpty
     protected String contrasenia;
+
+    
 
     @NotEmpty
     protected Integer dni;
@@ -52,5 +54,7 @@ public abstract class Usuario {
     
     @NotNull
     protected Rol rol;
+
 }
+
 
