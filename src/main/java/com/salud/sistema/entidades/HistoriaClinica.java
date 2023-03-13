@@ -40,6 +40,7 @@ public class HistoriaClinica implements Serializable {
     @OneToMany
     private List<DetalleHC> detalles;
     
+<<<<<<< HEAD
     @OneToMany
 <<<<<<< HEAD
 =======
@@ -47,4 +48,6 @@ public class HistoriaClinica implements Serializable {
 >>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
     private List<Profesional> profesionales;
     
+=======
+>>>>>>> 6d43cf9c990a78d865ca2a56aaf185c8eca189d1
 }

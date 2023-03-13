@@ -45,13 +45,16 @@ public class PacienteServicio {
     @Transactional
 
     public void crearPaciente(String nombre, String apellido, String email,
-            String contrasenia, String contrasenia2, Integer dni,
+            String contrasenia,String contrasenia2, Integer dni,
             Integer telefono, Long idObraSocial) throws MiExcepcion {
 
         validarDatos(nombre, apellido, email, contrasenia, contrasenia2, dni, telefono);
 
+<<<<<<< HEAD
  
 >>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
+=======
+>>>>>>> 6d43cf9c990a78d865ca2a56aaf185c8eca189d1
         Paciente paciente = new Paciente();
 
         HistoriaClinica historiaClinica = servicioHC.crearHistoriaClinica();
@@ -61,7 +64,7 @@ public class PacienteServicio {
         paciente.setNombre(nombre);
         paciente.setApellido(apellido);
         paciente.setEmail(email);
-        //paciente.setContrasenia(contrasenia);
+        paciente.setContrasenia(contrasenia);
         paciente.setDni(dni);
         paciente.setTelefono(telefono);
         paciente.setHistoriaClinica(historiaClinica);
@@ -79,6 +82,7 @@ public class PacienteServicio {
 
     @Transactional
     public void modificarPaciente(Long id, String nombre, String apellido, String email, Integer telefono/*, Long idObraSocial*/) throws MiExcepcion{
+
         Paciente paciente = repoPaciente.findById(id).get();
 <<<<<<< HEAD
         if (paciente == null){
@@ -188,9 +192,13 @@ public class PacienteServicio {
         }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 =======
 
     }
 }
 >>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
+=======
+    }
+>>>>>>> 6d43cf9c990a78d865ca2a56aaf185c8eca189d1

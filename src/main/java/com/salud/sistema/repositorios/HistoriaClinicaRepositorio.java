@@ -26,7 +26,11 @@ public interface HistoriaClinicaRepositorio extends JpaRepository<HistoriaClinic
 }
 =======
 
-
+       public HistoriaClinica findByPacienteId(long pacienteId);
+    
+    
+    
+    
     /* @Query("SELECT h FROM HistoriaClinica h WHERE h.paciente.dni = :dni")
     public Paciente buscarPorPaciente (@Param ("dni") Integer dni);
      */

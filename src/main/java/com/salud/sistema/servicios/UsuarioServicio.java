@@ -5,6 +5,7 @@ package com.salud.sistema.servicios;
 =======
 >>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
 import com.salud.sistema.entidades.Admin;
+import com.salud.sistema.entidades.Imagen;
 import com.salud.sistema.entidades.Usuario;
 import com.salud.sistema.enums.Rol;
 import com.salud.sistema.excepciones.MiExcepcion;
@@ -13,12 +14,14 @@ import com.salud.sistema.repositorios.UsuarioRepositorio;
 
 =======
 import com.salud.sistema.repositorios.AdminRepositorio;
+import com.salud.sistema.repositorios.ImagenRepositorio;
 import com.salud.sistema.repositorios.PacienteRepositorio;
 import com.salud.sistema.repositorios.ProfesionalRepositorio;
 import com.salud.sistema.repositorios.UsuarioRepositorio;
 >>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,6 +71,9 @@ public class UsuarioServicio implements UserDetailsService {
     @Autowired
     private ProfesionalRepositorio profesionalRepositorio;
 
+    @Autowired
+    private ImagenServicio imagenServicio;
+    
     @Transactional
     public void registrar(MultipartFile archivo, String nombre, String email, String password, String password2) throws MiExcepcion {
 
@@ -77,15 +83,51 @@ public class UsuarioServicio implements UserDetailsService {
 
         admin.setNombre(nombre);
         admin.setEmail(email);
-
+        
         admin.setContrasenia(new BCryptPasswordEncoder().encode(password));
+
+        Imagen imagen = imagenServicio.guardar(archivo);
+                
+        admin.setImagen(imagen);
 
         admin.setRol(Rol.ADMIN);
 
         usuarioRepositorio.save(admin);
 >>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
     }
+    
+    @Transactional
+    public void actualizar(MultipartFile archivo, String idUsuario, String nombre, String email, String contrasenia, String contrasenia2) throws MiExcepcion {
 
+        validar(nombre, email, contrasenia, contrasenia2);
+
+        Usuario respuesta = buscarUsuarioPorEmail(email);
+        if (respuesta !=null) {
+
+            Usuario usuario = respuesta;
+            usuario.setNombre(nombre);
+            usuario.setEmail(email);
+
+            usuario.setContrasenia(new BCryptPasswordEncoder().encode(contrasenia));
+            
+            usuario.setRol(Rol.ADMIN);
+         
+            String idImagen = null;
+            
+            if (usuario.getImagen() != null) {
+                idImagen = usuario.getImagen().getId();
+            }
+            
+            Imagen imagen = imagenServicio.actualizar(archivo, idImagen);
+            
+            usuario.setImagen(imagen);
+            
+            usuarioRepositorio.save(usuario);
+        }
+
+    }
+    
+    
     private void validar(String nombre, String email, String password, String password2) throws MiExcepcion {
 
 <<<<<<< HEAD
@@ -175,5 +217,10 @@ public class UsuarioServicio implements UserDetailsService {
         } 
         return usuario;
     }
+<<<<<<< HEAD
 >>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
+=======
+
+    
+>>>>>>> 6d43cf9c990a78d865ca2a56aaf185c8eca189d1
 }

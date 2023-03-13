@@ -13,11 +13,17 @@
         "th:action": {
             "context": "form"
         },
+        "th:replace": {
+            "context": "footer"
+        },
         "th:href": {
             "context": "a"
         },
         "th:value": {
             "context": "input"
+        },
+        "xmnls:th": {
+            "context": "html"
         }
     }
 }

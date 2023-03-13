@@ -7,11 +7,8 @@
 	<link rel="stylesheet" href="../style.css">
     <title>Registro de Pacientes</title>
 </head>
-<<<<<<< HEAD
-<body>
-=======
+
 <body  class="container_fondo">
->>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
 
     <header>
         <nav class="container_nav">
@@ -39,11 +36,8 @@
 							</div> -->
 				<h2 class="titulo-seccion">CARGUE SUS DATOS</h2>
 				<form class="form"
-<<<<<<< HEAD
-						th:action="@{//paciente/registro}"
-=======
+
 						th:action="@{//profesional/registro}"
->>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
 						method="POST"
 						enctype="multipart/form-data"
 						id="formu"
@@ -98,7 +92,7 @@
 							th:value="${telefono}"
 							/>
 					</div>
-<<<<<<< HEAD
+
 	
 					<div class="label">
 						<label class="subtitulo-label" >Obra Social</label>
@@ -112,9 +106,41 @@
 						</select>
 					</div>
 					
-=======
+
+                                        <div class="label">
+						<label class="subtitulo-label">Matricula</label>
+						<input
+							type="text"
+							class="form-input"
+							name="matricula"
+							placeholder="ingrese matricula"
+							th:value="${matricula}"
+							/>
+					</div>
+                                        <div class="label">
+						<label class="subtitulo-label">Descripción</label>
+						<input
+							type="text"
+							class="form-input"
+							name="descripcion"
+							placeholder="ingrese descripción"
+							th:value="${descripcion}"
+							/>
+					</div>
+                                        <div class="label">
+						<label class="subtitulo-label" >Tipo de consulta</label>
+						<select name="idOS" class="select-crear">
+							<option>Seleccionar tipo de consulta</option>
+							<option value="presencial">Presencial</option>
+                                                        <option value="teleconsulta">Teleconsulta</option>
+						</select>
+					</div>
+                                    
+                                        <div class="subtitulo-label">
+                                                <label class="subtitulo-label">Foto</label>
+                                                <input type="file" class="form-input" name="archivo" >
+                                        </div>
 				
->>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
 					<div class="btn-div">
 						<button type="submit" class="btn" id="boton">
 							REGISTRAR

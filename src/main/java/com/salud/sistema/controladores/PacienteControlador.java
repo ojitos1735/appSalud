@@ -46,6 +46,7 @@ public class PacienteControlador {
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre, @RequestParam String apellido, @RequestParam String email, 
 <<<<<<< HEAD
+<<<<<<< HEAD
             /*@RequestParam String contrasenia,*/
             @RequestParam Integer dni, @RequestParam Integer telefono, @RequestParam Long idOS, ModelMap modelo) {
         try {
@@ -56,6 +57,11 @@ public class PacienteControlador {
         try {
             pacienteServicio.crearPaciente(nombre, apellido, email, contrasenia,contrasenia2, dni, telefono, idOS);
 >>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
+=======
+            @RequestParam String contrasenia,@RequestParam Integer dni, @RequestParam Integer telefono, @RequestParam Long idOS, ModelMap modelo) {
+        try {pacienteServicio.crearPaciente(nombre, apellido, email, contrasenia, contrasenia, dni, telefono, idOS);
+
+>>>>>>> 6d43cf9c990a78d865ca2a56aaf185c8eca189d1
             modelo.put("exito", "El paciente fue registrado exitosamente");
             return "redirect:/";
         } catch (MiExcepcion ex) {
@@ -107,8 +113,10 @@ public class PacienteControlador {
 =======
             Integer telefono/*, Long idObraSocial*/, ModelMap modelo) {
         try {
-            pacienteServicio.modificarPaciente(id, nombre, apellido, email, telefono /*, idObraSocial*/);
-            return "redirect:/";
+            pacienteServicio.modificarPaciente(id, nombre, apellido, email, telefono/*, idObraSocial*/) ;
+
+            return "redirect:../listar";
+
         } catch (MiExcepcion ex) {
             modelo.put("error", ex.getMessage());
             return "registro_paciente_modificar.html";

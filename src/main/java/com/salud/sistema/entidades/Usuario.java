@@ -29,6 +29,7 @@ public abstract class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 =======
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotEmpty;
 
 import lombok.Data;
 
@@ -59,6 +60,7 @@ public abstract class Usuario {
     protected String email;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     
     protected String contrasenia;
     
@@ -73,22 +75,39 @@ public abstract class Usuario {
    // @NotNull
 =======
 
+=======
+>>>>>>> 6d43cf9c990a78d865ca2a56aaf185c8eca189d1
     protected String contrasenia;
- 
+    
     protected Integer dni;
 
     protected Integer telefono;
-    /*
-    @NotEmpty
-    protected Imagen imagen;  
-     */
+    
+    @OneToOne
+    protected Imagen imagen;
+    
+     
+//    private Imagen imagen;
+//
+//    public Imagen getImagen() {
+//        return imagen;
+//    }
+//
+//    public void setImagen(Imagen imagen) {
+//        this.imagen = imagen;
+//    }
+ 
     // @NotNull
 >>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
     protected Boolean alta;
 
     protected Rol rol;
+<<<<<<< HEAD
 }
 <<<<<<< HEAD
 =======
 
 >>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
+=======
+}
+>>>>>>> 6d43cf9c990a78d865ca2a56aaf185c8eca189d1

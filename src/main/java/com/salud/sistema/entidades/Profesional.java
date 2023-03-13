@@ -75,6 +75,7 @@ public class Profesional extends Usuario {
 <<<<<<< HEAD
 =======
     private String descripcion;
+    private String contrasenia;
 
     public Profesional() {
        

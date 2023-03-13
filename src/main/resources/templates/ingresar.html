@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmnls:th="http://www.thymeleaf.org" xmnls:sec="http://www.thymeleaf.org/extras/spring/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,10 +14,10 @@
             <div class="navbar">
                 <ul>
                     <li class="nav_li">
-                        <a href="../index.html">HOME</a>
+                        <a href="/">HOME</a>
                     </li>
                     <li class="nav_li">
-                        <a href="./registrarse.html">INGRESAR</a>
+                        <a href="/registrarse">REGISTRARSE</a>
                     </li>
                 </ul>
             </div>            
@@ -35,7 +35,7 @@
                             </div> -->
                 <h2 class="titulo-seccion">INGRESE SUS DATOS</h2>
                 <form class="form"
-                        th:action="@{/logincheck}"
+                        th:action="@{/ingresar}"
                         method="POST"
                         id="formu"
                         >

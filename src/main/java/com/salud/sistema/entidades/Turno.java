@@ -65,5 +65,10 @@ public class Turno {
     private boolean disponibilidad;
 
     private EstadoTurno estadoTurno;
+<<<<<<< HEAD
 >>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
+=======
+    
+    private Double puntaje;
+>>>>>>> 6d43cf9c990a78d865ca2a56aaf185c8eca189d1
 }

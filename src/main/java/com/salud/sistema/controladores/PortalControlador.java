@@ -32,13 +32,17 @@ public class PortalControlador {
 >>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
     }
 
-    @GetMapping("/registrar")
+    @GetMapping("/registrarse")
     public String registrar() {
+<<<<<<< HEAD
 <<<<<<< HEAD
     return "registrarse.html";
 =======
         return "registro.html";
 >>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
+=======
+        return "registro_paciente.html";
+>>>>>>> 6d43cf9c990a78d865ca2a56aaf185c8eca189d1
     }
 
     @PostMapping("/registro")
@@ -69,12 +73,12 @@ public class PortalControlador {
             modelo.put("nombre", nombre);
             modelo.put("email", email);
 
-            return "registro.html";
+            return "registro_paciente.html";
         }
 
     }
 
-    @GetMapping("/login")
+    @GetMapping("/ingresar")
     public String login(@RequestParam(required = false) String error, ModelMap modelo ) {
 >>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
 
@@ -83,10 +87,14 @@ public class PortalControlador {
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         return "ingresar.html";
 =======
         return "login.html";
 >>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
+=======
+        return "ingresar.html";
+>>>>>>> 6d43cf9c990a78d865ca2a56aaf185c8eca189d1
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")

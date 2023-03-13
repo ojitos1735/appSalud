@@ -72,8 +72,6 @@
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-el</artifactId>
             <version>9.0.68</version>
-<<<<<<< HEAD
-=======
 
             <type>jar</type>
         </dependency>
@@ -88,18 +86,12 @@
             <artifactId>spring-beans</artifactId>
             <version>5.3.23</version>
 
->>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
             <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
-<<<<<<< HEAD
-            <version>5.7.4</version>
-            <type>jar</type>
-        </dependency>
-    </dependencies>
-=======
+
             <version>5.6.3</version>
             <type>jar</type>
         </dependency>
@@ -116,8 +108,6 @@
         </dependency>
     </dependencies>
     
->>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
-
     <build>
         <plugins>
             <plugin>
@@ -128,5 +118,3 @@
     </build>
 
 </project>
-
-
