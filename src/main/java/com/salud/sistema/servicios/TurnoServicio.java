@@ -35,6 +35,9 @@ public class TurnoServicio {
     @Autowired
     private ProfesionalRepositorio profesionalRepositorio;
 
+    int contador = 0;
+    double acumulador = 0;
+
     @Transactional
     public Turno crearTurno(long profesionalId, Dia dia, String horaInicio, String horaFin, boolean disponibilidad, TipoConsulta tipoConsulta) throws MiExcepcion {
 
@@ -67,11 +70,10 @@ public class TurnoServicio {
         turno.setDia(dia);
 
         turno.setHorainicio(horaInicio1);
-        
+
         turno.setHoraFin(horaFin2);
-        
-        turno.setDisponibilidad(
-                true);
+
+        turno.setDisponibilidad(true);
         turno.setProfesional(profesional);
 
         turno.setTipoConsulta(tipoConsulta);
@@ -135,5 +137,56 @@ public class TurnoServicio {
         turnoRepositorio.save(turno);
         return turno;
     }
+    //este servicio va a una vista desde profesional..al elegir un turno,deberia redirigirse a otra vista que es la de cargar historia clinica
 
+    public List<Turno> turnosDelDia(long profesionalId, Dia dia) {
+        List<Turno> turnosDelDia = turnoRepositorio.findByProfesionalIdAndDia(profesionalId, dia);
+
+        return turnosDelDia;
+
+    }
+
+    //lista para el paciente conocer sus turnos y sus respectivos estados(aceptado,finalizado,etc)
+    public List<Turno> turnosPorPaciente(long pacienteId) {
+        List<Turno> turnosSinPuntaje = new ArrayList<>();
+
+        List<Turno> misTurnos = turnoRepositorio.findByPacienteId(pacienteId);
+        misTurnos.stream().forEach(mp -> {
+            if (mp.getPuntaje() == null) {
+                turnosSinPuntaje.add(mp);
+            }
+        });
+        return turnosSinPuntaje;
+
+    }
+
+    //este servicio se llama unicamente si el turno se encuentra finalizado
+    public Turno calcularPuntajePorTurno(long id, double puntaje, long profesionalId) throws MiExcepcion {
+        Turno turno = turnoRepositorio.findFirstById(id);
+        try {
+
+            if (turno == null) {
+                throw new MiExcepcion("No se pudo encontrar el turno");
+            }
+        } catch (MiExcepcion e) {
+            throw new MiExcepcion("lo sentimos,ocurrio un error");
+        }
+        turno.setPuntaje(puntaje);
+        turnoRepositorio.save(turno);
+        contador = 0;
+        acumulador = 0;
+        //aqui con esta lista busco a quienes solamente a los que recibieron puntaje
+        List<Turno> listaPuntajes = turnoRepositorio.findByProfesionalIdAndPuntajeIsNotNull(profesionalId);
+        listaPuntajes.stream().forEach(lp -> {
+            contador++;
+            acumulador += lp.getPuntaje();
+
+        });
+        double total = acumulador / contador;
+        Profesional profesional = profesionalRepositorio.findFirstById(profesionalId);
+        profesional.setCalificacion(total);
+        profesionalRepositorio.save(profesional);
+
+        return turno;
+    }
 }

@@ -31,8 +31,4 @@ public class HistoriaClinica implements Serializable {
     @OneToMany
     private List<DetalleHC> detalles;
     
-    @OneToMany
-
-    private List<Profesional> profesionales;
-    
 }
