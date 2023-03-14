@@ -77,6 +77,10 @@ input{
     line-height: 1.5;
 }
 
+#btn_volver{
+  padding-top: 20px;
+}
+
 /* label{
     font-size: 18px;
     line-height: 2;
@@ -181,7 +185,8 @@ select {
     align-items: center;
     background-color: #fff;
     padding: 20px;
-    margin:50px;
+    margin: auto;
+    margin-top: 30px;
     border-radius: 20px;
     height: auto;
     box-shadow: 5px 5px 10px rgba(136, 136, 136, 0.526);
@@ -279,10 +284,6 @@ select {
 }
 
   /* ----TABLAS LISTAR---- */
-  .container_paciente_listar{
-    
-  }
-
 
 table.table_container_paciente {
     border: 1px solid #1C6EA4;
