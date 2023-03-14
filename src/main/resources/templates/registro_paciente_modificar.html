@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -55,6 +55,22 @@
 						name="telefono"
 					/>
 				</div>
+				<!--<div class="form-floating">
+					<select
+						class="form-select"
+						id="idOS"
+						name="idOS"
+						aria-label="Floating label select example"
+					>
+						 <option>Seleccione una Obra Social</option>
+						<option
+							th:each="obraSocial : ${obrasSociales}"
+							th:value="${obraSocial.id}"
+							th:text="${obraSocial.nombreOS}"
+						/>
+					</select>
+					<label for="idObraSocial">ObraSocial</label>
+				</div> -->
 
 				<button type="submit" class="btn btn-primary mt-3 botones">
 					Actualizar

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmnls:th="http://www.thymeleaf.org" xmnls:sec="http://www.thymeleaf.org/extras/spring/spring-security">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,10 +28,18 @@
         <section class="container-vista-paciente">
             
             <div class="parent">
-                <h2>Profesional <th scope="row" th:text=""> </th><br>
-                        <td th:text=></td><br>
-                        <td th:text=></td><br>
-                        <td th:text=></td><br>
+                <h2>Profesional <th scope="row" th:text="${profesional.nombre}${profesional.apellido}"> </th><br>
+                    <td th:text="${profesional.email}"></td><br>
+                    <td th:text="${profesional.telefono}"></td><br>
+                    <td th:text="${profesional.especialidad}"></td><br>
+                    <td th:text="${profesional.matricula}"></td><br>
+                    <td th:text="${profesional.valorConsulta}"></td><br>
+                    <td th:text="${profesional.calificacion}"></td><br>
+                    <input type="checkbox" name="roles"
+                        th:each="obraSocial : ${obrasSociales}"
+                        th:text="${obraSocial.nombreOS}"
+                        th:value="${obraSocial.id}"
+                    />
                 </h2>
                 <img width="40px" height="40px" class="foto-usuario" th:if="${session.usuarioActivo != null}" th:src="@{/imagen/perfil/__${session.usuarioActivo.id}__}" alt="Foto Usuario">
             </div>
@@ -44,7 +52,7 @@
             <div class="btn-div-paciente">
                 <div class="btn1">
                     <button type="submit" class="btn" id="boton">
-                      <a th:href= "@{}"> Modificar datos</a>
+                      <a th:href= "@{/profesional/modificar/__${profesional.id}__}"> Modificar datos</a>
                     </button>
                 </div>
                 

@@ -42,18 +42,7 @@ public abstract class Usuario {
     protected Integer telefono;
     
     @OneToOne
-    protected Imagen imagen;
-    
-     
-//    private Imagen imagen;
-//
-//    public Imagen getImagen() {
-//        return imagen;
-//    }
-//
-//    public void setImagen(Imagen imagen) {
-//        this.imagen = imagen;
-//    }
+    protected Imagen imagen;    
  
     // @NotNull
     protected Boolean alta;

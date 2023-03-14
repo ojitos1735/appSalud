@@ -3,6 +3,7 @@ package com.salud.sistema.controladores;
 
 import com.salud.sistema.entidades.Usuario;
 import com.salud.sistema.excepciones.MiExcepcion;
+import com.salud.sistema.servicios.ObraSocialServicio;
 import com.salud.sistema.servicios.UsuarioServicio;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +23,12 @@ public class PortalControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
 
+    @Autowired
+    private ObraSocialServicio obraSocialServicio;
+    
     @GetMapping("/")
-    public String index() {
-
+    public String index(ModelMap modelo) {
+        modelo.addAttribute("obrasSociales", obraSocialServicio.listarObrasSociales());
         return "index.html";
     }
 
@@ -74,7 +78,7 @@ public class PortalControlador {
             return "redirect:/admin/dashboard";
         }
         
-           return "inicio.html";
+           return "index.html";
     }
 
 }

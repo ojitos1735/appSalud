@@ -62,9 +62,7 @@ public class UsuarioServicio implements UserDetailsService {
                 
         admin.setImagen(imagen);
 
-        admin.setRol(Rol.ADMIN);
-
-        usuarioRepositorio.save(admin);
+        adminRepositorio.save(admin);
     }
     
     @Transactional
@@ -80,8 +78,6 @@ public class UsuarioServicio implements UserDetailsService {
             usuario.setEmail(email);
 
             usuario.setContrasenia(new BCryptPasswordEncoder().encode(contrasenia));
-            
-            usuario.setRol(Rol.ADMIN);
          
             String idImagen = null;
             
@@ -152,6 +148,15 @@ public class UsuarioServicio implements UserDetailsService {
         } 
         return usuario;
     }
-
     
+    public Usuario buscarUsuarioPorId(Long id) {
+        Usuario usuario = pacienteRepositorio.buscarPorId(id);
+        if (usuario == null) {
+            usuario = profesionalRepositorio.buscarPorId(id);
+            if (usuario == null) {
+                usuario = adminRepositorio.buscarPorId(id);
+            }
+        } 
+        return usuario;
+    }
 }
