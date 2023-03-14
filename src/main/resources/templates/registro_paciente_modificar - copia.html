@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,21 +8,21 @@
     <title>Document</title>
 </head>
 <body  class="container_fondo">
-	
-	<header>
-		<nav class="container_nav">
-			<div class="navbar">
-				<ul>
-					<li class="nav_li">
-						<a href="../index.html">HOME</a>
-					</li>
-					<li class="nav_li">
-						<a href="./ingresar.html">INGRESAR</a>
-					</li>
-				</ul>
-			</div>            
-		</nav>
-	</header>
+    <header>
+        <nav class="container_nav">
+            <div class="navbar">
+                <ul>
+                    <li class="nav_li">
+                        <a href="/">HOME</a>
+                    </li>
+                    <li class="nav_li">
+                        <a href="/ingresar">INGRESAR</a>
+                    </li>
+                </ul>
+            </div>            
+        </nav>
+    </header>
+
 
 	<main>
 		<section class="container-flex-paciente">
@@ -88,18 +88,22 @@
 							th:value="${paciente.telefono}"
 							/>
 					</div>
+
+					<!--
+						<div class="label">
+							<label class="subtitulo-label" >Obra Social</label>
+							<select name="idOS" class="select-crear">
+								<option>Seleccionar Obra Social</option>
+								<option 
+								th:each="obraSocial : ${obrasSociales}"
+								th:value="${obraSocial.id}"
+								th:text="${obraSocial.nombreOS}"
+								/>
+							</select>
+						</div>
+					
+					-->
 	
-					<div class="label">
-						<label class="subtitulo-label" >Obra Social</label>
-						<select name="idOS" class="select-crear">
-							<option>Seleccionar Obra Social</option>
-							<option 
-							th:each="obraSocial : ${obrasSociales}"
-							th:value="${obraSocial.id}"
-							th:text="${obraSocial.nombreOS}"
-							/>
-						</select>
-					</div>
 					
 					<div class="btn-div">
 						<button type="submit" class="btn" id="boton">
@@ -108,6 +112,30 @@
 						</button>
 					</div>
 				</form>
+
+				<div th:if="${exito}!=null">
+					<div class="card-body">
+						<h5 class="card-title">El usuario ha sido cargado con exito!</h5>
+						<p class="card-text" th:text="${exito}"></p>
+					</div>
+				</div>
+				<div th:if="${error}!=null">
+					<div class="card-body">
+						<h5 class="card-title">Error!</h5>
+						<p class="card-text" th:text="${error}"></p>
+					</div>
+				</div>
+			<section class="text-center container">
+				<div class="row mt-3">
+					<div class="divVolver">
+						<a th:href="@{/}" class="btn btn-secondary my-2 botonVolver botones"
+							>Volver</a
+						>
+					</div>
+				</div>
+			</section>
+
+
 			</div>
 		</section>
 	</main>

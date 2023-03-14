@@ -47,7 +47,13 @@ nav ul li a{
 }
 
 .container_fondo{
-    background-color:  #e8e2d7;
+    background-image: url(img/fondo.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    height:89vh ;
+    text-align: center;
 }
 
 footer{
@@ -273,6 +279,9 @@ select {
 }
 
   /* ----TABLAS LISTAR---- */
+  .container_paciente_listar{
+    
+  }
 
 
 table.table_container_paciente {
