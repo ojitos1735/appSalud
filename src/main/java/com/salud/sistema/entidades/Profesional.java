@@ -1,17 +1,9 @@
 package com.salud.sistema.entidades;
 
-<<<<<<< HEAD
-
-import com.salud.sistema.enums.Especialidad;
-import com.salud.sistema.enums.TipoConsulta;
-=======
 import com.salud.sistema.enums.Especialidad;
 import com.salud.sistema.enums.Rol;
 import com.salud.sistema.enums.TipoConsulta;
-
 import java.util.List;
-
->>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,11 +12,6 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-<<<<<<< HEAD
-import javax.persistence.OneToMany;
-=======
-
->>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,19 +19,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Profesional extends Usuario {
-<<<<<<< HEAD
-    //  @Column(name= "Especialidad")
-    private Especialidad especialidad;
 
-    @OneToMany
-    private Set<Horario> horarios;
-
-    private Float valorConsulta;
-
-    @Column(name = "Tipo_Consulta")
-    private TipoConsulta tipoConsulta;
-
-=======
 
 
      @Column(name= "Especialidad")
@@ -52,28 +27,22 @@ public class Profesional extends Usuario {
 
     private Float valorConsulta;
 
->>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "profesional_cubreos", joinColumns
             = @JoinColumn(name = "profesional_id"),
             inverseJoinColumns = @JoinColumn(name = "cubreos_id"))
-<<<<<<< HEAD
-    private Set<ObraSocial> cubreOS;
-=======
+
 
     private List<ObraSocial> cubreOS;
   
     @Column(name = "Tipo_Consulta")
     private TipoConsulta tipoConsulta;
 
->>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
 
     private Integer matricula;
 
     private Double calificacion;
 
-<<<<<<< HEAD
-=======
     private String descripcion;
     private String contrasenia;
 
@@ -81,7 +50,6 @@ public class Profesional extends Usuario {
        
     }
 
->>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
     public Especialidad getEspecialidad() {
         return especialidad;
     }
@@ -90,8 +58,6 @@ public class Profesional extends Usuario {
         this.especialidad = especialidad;
     }
 
-<<<<<<< HEAD
-=======
 
     public Profesional(String nombre, String apellido, String email, String contrasenia, Integer dni, Integer telefono) {
         super();
@@ -115,5 +81,4 @@ public class Profesional extends Usuario {
     }
 
 
->>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
 }

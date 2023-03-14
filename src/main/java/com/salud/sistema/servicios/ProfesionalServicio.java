@@ -2,17 +2,6 @@ package com.salud.sistema.servicios;
 
 import com.salud.sistema.entidades.ObraSocial;
 import com.salud.sistema.entidades.Profesional;
-<<<<<<< HEAD
-import com.salud.sistema.enums.Especialidad;
-import com.salud.sistema.enums.Rol;
-import com.salud.sistema.enums.TipoConsulta;
-import com.salud.sistema.excepciones.ProfesionalException;
-import com.salud.sistema.repositorios.ProfesionalRepositorio;
-import java.util.ArrayList;
-import java.util.List;
-import javax.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
-=======
 import com.salud.sistema.entidades.Turno;
 import com.salud.sistema.enums.Especialidad;
 import com.salud.sistema.enums.Rol;
@@ -31,7 +20,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
->>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
 import org.springframework.stereotype.Service;
 
 @Service
@@ -39,41 +27,7 @@ public class ProfesionalServicio {
 
     @Autowired
     private ProfesionalRepositorio profesionalRepositorio;
-<<<<<<< HEAD
 
-   /* @Transactional
-    public void crear(
-            String nombre,
-            String apellido,
-            String email,
-            Integer telefono,
-            String constrasenia,
-            Especialidad especialidad,
-            Float valorConsulta,
-            Integer matricula,
-            List<ObraSocial> cubreOS,
-            TipoConsulta tipoConsulta
-    ) {
-        Profesional profesional = new Profesional();
-        profesional.setNombre(nombre);
-        profesional.setApellido(apellido);
-        profesional.setEmail(email);
-        profesional.setTelefono(telefono);
-        profesional.setContrasenia(constrasenia);
-        profesional.setEspecialidad(especialidad);
-        profesional.setValorConsulta(valorConsulta);
-        profesional.setMatricula(matricula);
-        profesional.setTipoConsulta(tipoConsulta);
-        profesional.setRol(Rol.PROFESIONAL);
-        profesional.setAlta(Boolean.TRUE);
-
-        profesionalRepositorio.save(profesional);
-    } 
-    */
-
-    //buscar profesionales segun especialidad
-    public List<Profesional> buscarProfesionalPorEspecialidad(Especialidad especialidad, String obraSocial)  {
-=======
     @Autowired
     private ObraSocialRepositorio obraSocialRepositorio;
 
@@ -99,30 +53,17 @@ public class ProfesionalServicio {
 
     //buscar profesionales segun especialidad
     public List<Profesional> buscarProfesionalPorEspecialidad(Especialidad especialidad, String obraSocial) throws MiExcepcion {
->>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
 
         List<Profesional> profesionales = new ArrayList();
         try {
             if (obraSocial == null && especialidad != null) {
-<<<<<<< HEAD
-                profesionales = profesionalRepositorio.findByEspecialidad(especialidad);
-=======
+
                 profesionales = profesionalRepositorio.findByEspecialidadOrderByValorConsultaAsc(especialidad);
->>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
             }
             if (especialidad != null && obraSocial != null) {
                 profesionales = profesionalRepositorio.findByCubreOSNombreOSAndEspecialidad(obraSocial, especialidad);
             }
-<<<<<<< HEAD
-            if(profesionales.isEmpty()){
-                return null;
-            }
-        } catch (Exception e) {
-            //throw new ProfesionalException("lo sentimos,ocurrio un error");
-            e.getMessage();
-        }
-        
-=======
+
             if (profesionales.isEmpty()) {
                 return null;
             }
@@ -130,13 +71,11 @@ public class ProfesionalServicio {
             throw new MiExcepcion("lo sentimos,ocurrio un error");
 
         }
->>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
 
         return profesionales;
 
     }
-<<<<<<< HEAD
-=======
+
 
     @Transactional
     public String bajaProfesional(Long id) throws MiExcepcion {
@@ -192,5 +131,4 @@ public class ProfesionalServicio {
             throw new MiExcepcion("La contraseña no puede estar vacía, y debe tener más de 5 dígitos");
         }
     }
->>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
 }

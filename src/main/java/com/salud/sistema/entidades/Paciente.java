@@ -22,10 +22,10 @@ public class Paciente extends Usuario implements Serializable {
     @OneToOne
     private ObraSocial obraSocial;
     private String contrasenia;
-    /*
+    
     @OneToMany
     private List<Profesional> profesionales;
-*/
+
     public Paciente(){
         super();
         rol = Rol.PACIENTE;
@@ -37,15 +37,7 @@ public class Paciente extends Usuario implements Serializable {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
-<<<<<<< HEAD
-<<<<<<< HEAD
         this.contrasenia = contrasenia;
-=======
-        //this.contrasenia = contrasenia;
->>>>>>> 3a9e5b14044bf48198cd917d55b2f11cccfac119
-=======
-        this.contrasenia = contrasenia;
->>>>>>> 6d43cf9c990a78d865ca2a56aaf185c8eca189d1
         this.dni = dni;
         this.telefono = telefono;
         this.alta = true;
