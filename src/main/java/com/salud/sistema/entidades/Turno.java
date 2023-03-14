@@ -43,4 +43,6 @@ public class Turno {
     private boolean disponibilidad;
 
     private EstadoTurno estadoTurno;
+    
+    private Double puntaje;
 }

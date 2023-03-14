@@ -20,10 +20,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.salud.sistema.repositorios.ObraSocialRepositorio;
+import com.salud.sistema.servicios.ObraSocialServicio;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/profesional")
@@ -31,13 +33,21 @@ public class ProfesionalControlador {
 
     @Autowired
     private ProfesionalServicio profesionalServicio;
+    @Autowired
+    private ObraSocialServicio obraSocialServicio;
 
    
     private ProfesionalRepositorio profesionalRepositorio;
+    
+    
     @Autowired
     ObraSocialRepositorio obraSocialRepositorio;
 
-
+     @GetMapping("/registrar")  //localhost:8080/profesional/registrar
+    public String registrar(ModelMap modelo) {
+        modelo.addAttribute("obrasSociales", obraSocialServicio.listarObrasSociales());
+        return "registro_profesional.html";
+    }
 
 
     @GetMapping("/listarProfesionales") //localhost:8080/profesional/listarProfesionales
@@ -55,10 +65,10 @@ public class ProfesionalControlador {
     }
 
     @PostMapping("/registro")
-    public String createdProfesional(@RequestParam String nombre,@RequestParam String apellido,@RequestParam Integer dni,@RequestParam String email,@RequestParam Integer matricula,@RequestParam Integer telefono,@RequestParam Especialidad especialidad,@RequestParam String contrasenia,ModelMap modelo) {
+    public String createdProfesional(@RequestParam String nombre,@RequestParam String apellido,@RequestParam Integer dni,@RequestParam String email,@RequestParam Integer matricula,@RequestParam Integer telefono,@RequestParam Especialidad especialidad,@RequestParam String contrasenia,MultipartFile foto,ModelMap modelo) {
        
       try {
-          profesionalServicio.crearProfesional(nombre, apellido, dni, email, matricula, telefono, especialidad, contrasenia);
+          profesionalServicio.crearProfesional(nombre, apellido, dni, email, matricula, telefono, especialidad, contrasenia,foto);
             modelo.put("exito", "El Profesional fue registrado exitosamente");
             return "redirect:/";
     }catch( MiExcepcion ex){

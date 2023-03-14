@@ -1,5 +1,6 @@
 package com.salud.sistema.servicios;
 
+import com.salud.sistema.entidades.Imagen;
 import com.salud.sistema.entidades.ObraSocial;
 import com.salud.sistema.entidades.Profesional;
 import com.salud.sistema.entidades.Turno;
@@ -21,10 +22,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class ProfesionalServicio {
-
+    @Autowired
+    private ImagenServicio imagenServicio;
     @Autowired
     private ProfesionalRepositorio profesionalRepositorio;
     @Autowired
@@ -32,7 +35,7 @@ public class ProfesionalServicio {
 
 
     @Transactional
-    public Profesional crearProfesional(String nombre, String apellido, Integer dni, String email, Integer matricula, Integer telefono, Especialidad especialidad, String contrasenia) throws MiExcepcion {
+    public Profesional crearProfesional(String nombre, String apellido, Integer dni, String email, Integer matricula, Integer telefono, Especialidad especialidad, String contrasenia,MultipartFile archivo) throws MiExcepcion {
         validar(nombre, apellido, email, dni, telefono, matricula, especialidad, contrasenia);
         Profesional medico = new Profesional();
         medico.setNombre(nombre);
@@ -45,6 +48,8 @@ public class ProfesionalServicio {
         medico.setAlta(true);
         medico.setEspecialidad(especialidad);
         medico.setContrasenia(new BCryptPasswordEncoder().encode(contrasenia));
+        Imagen imagen = imagenServicio.guardar(archivo);
+        medico.setImagen(imagen);
         profesionalRepositorio.save(medico);
         return medico;
     }

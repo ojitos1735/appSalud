@@ -34,7 +34,7 @@ public class PacienteServicio {
 
     @Transactional
     public void crearPaciente(String nombre, String apellido, String email,
-            String contrasenia,String contrasenia2, Integer dni,
+            String contrasenia, String contrasenia2, Integer dni,
             Integer telefono, Long idObraSocial, MultipartFile foto) throws MiExcepcion {
 
         validarDatos(nombre, apellido, email, contrasenia, contrasenia2, dni, telefono);
@@ -46,7 +46,7 @@ public class PacienteServicio {
         ObraSocial obraSocial = servicioObraSocial.buscarPorId(idObraSocial);
 
         Imagen imagen = imagenServicio.guardar(foto);
-        
+
         paciente.setNombre(nombre);
         paciente.setApellido(apellido);
         paciente.setEmail(email);
@@ -73,11 +73,10 @@ public class PacienteServicio {
         pacientes = repoPaciente.listarPorApellido();
         return pacientes;
     }
-    
-    
+
     @Transactional
     public void modificarPaciente(Long id, String nombre, String apellido, String email, Integer telefono,
-            MultipartFile foto /*, Long idObraSocial*/) throws MiExcepcion{
+            MultipartFile foto /* , Long idObraSocial */) throws MiExcepcion {
 
         Paciente paciente = repoPaciente.findById(id).get();
         if (paciente == null) {
@@ -87,18 +86,18 @@ public class PacienteServicio {
             paciente.setApellido(apellido);
             paciente.setEmail(email);
             paciente.setTelefono(telefono);
-           
-            //ObraSocial obraSocial = repoObraSocial.findById(idObraSocial).get();
-            //paciente.setObraSocial(obraSocial);
-            
+
+            // ObraSocial obraSocial = repoObraSocial.findById(idObraSocial).get();
+            // paciente.setObraSocial(obraSocial);
+
             String idImagen = null;
-            
+
             if (paciente.getImagen() != null) {
                 idImagen = paciente.getImagen().getId();
             }
-            
+
             Imagen imagen = imagenServicio.actualizar(foto, idImagen);
-            
+
             paciente.setImagen(imagen);
 
             repoPaciente.save(paciente);
@@ -116,10 +115,9 @@ public class PacienteServicio {
         repoPaciente.save(paciente);
     }
 
-
     private void validarDatos(String nombre, String apellido, String email, String contrasenia,
             String contrasenia2, Integer dni, Integer telefono) throws MiExcepcion {
-        
+
         if (nombre.isEmpty() || nombre == null) {
             throw new MiExcepcion("El nombre no puede estar vacio ni ser nulo");
         } else if (nombre.length() < 3) {
@@ -147,11 +145,10 @@ public class PacienteServicio {
         if (dni.toString().isEmpty() || dni == null || dni < 10000000 || dni > 100000000) {
             throw new MiExcepcion("Ingrese un número de dni válido");
         }
-        
-        if(telefono.toString().isEmpty() || telefono == null || telefono < 1000000000) {
+
+        if (telefono.toString().isEmpty() || telefono == null || telefono < 1000000000) {
             throw new MiExcepcion("Ingrese un número de teléfono válido");
         }
     }
 
-    }
-
+}
