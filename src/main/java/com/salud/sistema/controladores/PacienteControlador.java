@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/paciente")      //localhost:8080/paciente
@@ -35,8 +36,9 @@ public class PacienteControlador {
 
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre, @RequestParam String apellido, @RequestParam String email, 
-            @RequestParam String contrasenia,@RequestParam Integer dni, @RequestParam Integer telefono, @RequestParam Long idOS, ModelMap modelo) {
-        try {pacienteServicio.crearPaciente(nombre, apellido, email, contrasenia, contrasenia, dni, telefono, idOS);
+            @RequestParam String contrasenia,@RequestParam Integer dni, @RequestParam Integer telefono, 
+            @RequestParam Long idOS, ModelMap modelo, MultipartFile foto) {
+        try {pacienteServicio.crearPaciente(nombre, apellido, email, contrasenia, contrasenia, dni, telefono, idOS, foto);
 
             modelo.put("exito", "El paciente fue registrado exitosamente");
             return "redirect:/";
@@ -50,7 +52,7 @@ public class PacienteControlador {
     
     @GetMapping("/listar") // localhost:8080/paciente/listar
     public String listar(ModelMap modelo) {
-        List<Paciente> pacientes = pacienteServicio.listarPacientes();
+        List<Paciente> pacientes = pacienteServicio.listarPacientesporApellido();
         modelo.addAttribute("pacientes", pacientes);
 
         return "registro_paciente_listar.html";
@@ -67,9 +69,9 @@ public class PacienteControlador {
     @PostMapping("/modificar/{id}") // localhost:8080/paciente/modificar/{id}
     public String modificar(@PathVariable Long id, String nombre, String apellido, String email,
 
-            Integer telefono/*, Long idObraSocial*/, ModelMap modelo) {
+            Integer telefono, MultipartFile foto/*, Long idObraSocial*/, ModelMap modelo) {
         try {
-            pacienteServicio.modificarPaciente(id, nombre, apellido, email, telefono/*, idObraSocial*/) ;
+            pacienteServicio.modificarPaciente(id, nombre, apellido, email, telefono, foto/*, idObraSocial*/) ;
 
             return "redirect:../listar";
 

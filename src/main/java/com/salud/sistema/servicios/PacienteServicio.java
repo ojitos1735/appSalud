@@ -2,6 +2,7 @@
 package com.salud.sistema.servicios;
 
 import com.salud.sistema.entidades.HistoriaClinica;
+import com.salud.sistema.entidades.Imagen;
 import com.salud.sistema.entidades.ObraSocial;
 import com.salud.sistema.entidades.Paciente;
 import com.salud.sistema.excepciones.MiExcepcion;
@@ -10,10 +11,11 @@ import com.salud.sistema.repositorios.ObraSocialRepositorio;
 import com.salud.sistema.repositorios.PacienteRepositorio;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class PacienteServicio {
@@ -28,13 +30,14 @@ public class PacienteServicio {
     private HistoriaClinicaRepositorio repoHistoriaClinica;
     @Autowired
     private HistoriaClinicaServicio servicioHC;
+    @Autowired
+    private ImagenServicio imagenServicio;
 
 
     @Transactional
-
     public void crearPaciente(String nombre, String apellido, String email,
-            String contrasenia,String contrasenia2, Integer dni,
-            Integer telefono, Long idObraSocial) throws MiExcepcion {
+            String contrasenia, String contrasenia2, Integer dni,
+            Integer telefono, Long idObraSocial, MultipartFile foto) throws MiExcepcion {
 
         validarDatos(nombre, apellido, email, contrasenia, contrasenia2, dni, telefono);
 
@@ -45,14 +48,17 @@ public class PacienteServicio {
 
         ObraSocial obraSocial = servicioObraSocial.buscarPorId(idObraSocial);
 
+        Imagen imagen = imagenServicio.guardar(foto);
+
         paciente.setNombre(nombre);
         paciente.setApellido(apellido);
         paciente.setEmail(email);
-        paciente.setContrasenia(contrasenia);
+        paciente.setContrasenia(new BCryptPasswordEncoder().encode(contrasenia));
         paciente.setDni(dni);
         paciente.setTelefono(telefono);
         paciente.setHistoriaClinica(historiaClinica);
         paciente.setObraSocial(obraSocial);
+        paciente.setImagen(imagen);
 
         repoPaciente.save(paciente);
     }
@@ -64,8 +70,16 @@ public class PacienteServicio {
         return pacientes;
     }
 
+    @Transactional(readOnly = true)
+    public List<Paciente> listarPacientesporApellido() {
+        List<Paciente> pacientes = new ArrayList();
+        pacientes = repoPaciente.listarPorApellido();
+        return pacientes;
+    }
+
     @Transactional
-    public void modificarPaciente(Long id, String nombre, String apellido, String email, Integer telefono/*, Long idObraSocial*/) throws MiExcepcion{
+    public void modificarPaciente(Long id, String nombre, String apellido, String email, Integer telefono,
+            MultipartFile foto /* , Long idObraSocial */) throws MiExcepcion {
 
         Paciente paciente = repoPaciente.findById(id).get();
 
@@ -76,11 +90,20 @@ public class PacienteServicio {
             paciente.setApellido(apellido);
             paciente.setEmail(email);
             paciente.setTelefono(telefono);
-           
 
-            //ObraSocial obraSocial = repoObraSocial.findById(idObraSocial).get();
-            //paciente.setObraSocial(obraSocial);
-            
+
+            // ObraSocial obraSocial = repoObraSocial.findById(idObraSocial).get();
+            // paciente.setObraSocial(obraSocial);
+
+            String idImagen = null;
+
+            if (paciente.getImagen() != null) {
+                idImagen = paciente.getImagen().getId();
+            }
+
+            Imagen imagen = imagenServicio.actualizar(foto, idImagen);
+
+            paciente.setImagen(imagen);
 
             repoPaciente.save(paciente);
         }
@@ -99,9 +122,14 @@ public class PacienteServicio {
     }
 
 
-
     private void validarDatos(String nombre, String apellido, String email, String contrasenia,
             String contrasenia2, Integer dni, Integer telefono) throws MiExcepcion {
+
+        if (nombre.isEmpty() || nombre == null) {
+            throw new MiExcepcion("El nombre no puede estar vacio ni ser nulo");
+        } else if (nombre.length() < 3) {
+            throw new MiExcepcion("El nombre no puede tener menos de 3 letras");
+        }
 
         if (apellido.isEmpty() || apellido == null) {
             throw new MiExcepcion("El apellido no puede estar vacio ni ser nulo");
@@ -121,15 +149,13 @@ public class PacienteServicio {
             throw new MiExcepcion("Las contraseñas ingresadas deben ser iguales");
         }
 
-        if (dni == null || dni < 10000000 || dni > 100000000) {
+        if (dni.toString().isEmpty() || dni == null || dni < 10000000 || dni > 100000000) {
             throw new MiExcepcion("Ingrese un número de dni válido");
         }
-        
-        if(telefono == null || telefono < 1000000000) {
+
+        if (telefono.toString().isEmpty() || telefono == null || telefono < 1000000000) {
             throw new MiExcepcion("Ingrese un número de teléfono válido");
         }
     }
 
-    }
-
-
+}

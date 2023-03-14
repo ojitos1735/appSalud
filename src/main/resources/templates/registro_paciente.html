@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="../style.css">
     <title>Registro de Pacientes</title>
 </head>
-<body>
+<body class="container_fondo">
 
     <header>
         <nav class="container_nav">
@@ -27,19 +27,9 @@
 	<main>    
 		<section class="container-flex-paciente">
 			<div class="formulario" >
-				<!--             <div th:if="${error != null}" id="mensajeError"  class="card text-white bg-danger mb-3 mensajeError">
-								<div class="card-body">
-									<h5 class="card-title">ERROR</h5>
-									<p class="card-text" th:text="${error}"></p>
-								</div>
-							</div> -->
 				<h2 class="titulo-seccion">CARGUE SUS DATOS</h2>
-				<form class="form"
-						th:action="@{/paciente/registro}"
-						method="POST"
-						enctype="multipart/form-data"
-						id="formu"
-						>
+
+				<form class="form" th:action="@{/paciente/registro}" method="POST" id="formu">
 					<div class="label">
 						<label class="subtitulo-label">Nombre: </label>
 						<input
@@ -47,7 +37,7 @@
 							class="form-input"
 							name="nombre"
 							placeholder="Ingresar Nombre"
-							th:value="${nombre}"
+							
 							/>
 					</div>
 					<div class="label">
@@ -57,7 +47,7 @@
 							class="form-input"
 							name="apellido"
 							placeholder="Ingresar apellido"
-							th:value="${apellido}"
+							
 							/>
 					</div>
 					<div class="label">
@@ -67,27 +57,47 @@
 							class="form-input"
 							name="email"
 							placeholder="Ingresar Email"
-							th:value="${email}"
+							
 							/>
+					</div>
+					<div class="label">
+						<label class="subtitulo-label">Contraseña: </label>
+						<input
+							type="password"
+							class="form-input"
+							name="contrasenia"
+							id="contrasenia"
+							placeholder="Ingresar contraseña"
+						/>
+					</div>
+					<div class="label">
+						<label class="subtitulo-label">Repita contraseña: </label>
+						<input
+							type="password"
+							class="form-input"
+							name="contrasenia2"
+							id="contrasenia2"
+							placeholder="Repetir contraseña"
+						/>
 					</div>
 					<div class="label">
 						<label class="subtitulo-label">DNI: </label>
 						<input
-							type="text"
+							type="number"
 							class="form-input"
-							name="DNI"
+							name="dni"
 							placeholder="Ingresar DNI"
-							th:value="${Dni}"
+							
 							/>
 					</div>
 					<div class="label">
 						<label class="subtitulo-label">Telefono</label>
 						<input
-							type="text"
+							type="number"
 							class="form-input"
 							name="telefono"
 							placeholder="Ingrese telefono"
-							th:value="${telefono}"
+							
 							/>
 					</div>
 	
@@ -102,14 +112,19 @@
 							/>
 						</select>
 					</div>
-                                        <div class="subtitulo-label">
-                                                <label class="subtitulo-label">Foto</label>
-                                                <input type="file" class="form-input" name="archivo" >
-                                        </div>
-					
+					<div class="subtitulo-label">
+						<label class="subtitulo-label">Foto</label>
+						<input type="file" class="form-input" name="foto" >
+					</div>
+					<div th:if="${error != null}" id="mensajeError"  class="error">
+						<div class="card-body">
+							<h5 class="card-title">ERROR</h5>
+							<p class="card-text" th:text="${error}"></p>
+						</div>
+					</div> 
 					<div class="btn-div">
 						<button type="submit" class="btn" id="boton">
-                            <a href=""></a>
+                            <a th:href="@{/}"></a>
 							REGISTRAR
 						</button>
 					</div>

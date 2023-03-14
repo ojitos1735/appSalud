@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,47 +7,72 @@
     <link rel="stylesheet" href="../style.css">
     <title>Lista de pacientes</title>
 </head>
-<body>
-    <div class="container_paciente_listar">
-        <br>
-        <h1>Lista de pacientes</h1>
-        <br>
-        <table class="table_container_paciente">
-            <thead>
-                <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellido</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Teléfono</th>
-                    <th scope="col">Obra Social</th>
-                    <th scope="col">Alta</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody th:each="paciente: ${pacientes}"> 
-                <tr>
-                    <th scope="row" th:text="${paciente.nombre}"></th>
-                    <td th:text="${paciente.apellido}"></td>
-                    <td th:text="${paciente.email}"></td>
-                    <td th:text="${paciente.telefono}"></td>
-                    <td th:text="${paciente.obraSocial.nombreOS}"></td>
-                    <td th:text="${paciente.alta}"></td>
-                    <td>
-                        <a th:href= "@{/paciente/modificar/__${paciente.id}__}"> Modificar </a>
-                        <a th:href= "@{/paciente/eliminar/__${paciente.id}__}"> Eliminar </a>
-                    </td>
-        
-                </tr>
-        
-            </tbody>
-        </table>
-        
-        
-        
-        
+<body  class="container_fondo">
+    <header>
+        <nav class="container_nav">
+            <div class="navbar">
+                <ul>
+                    <li class="nav_li">
+                        <a href="/">HOME</a>
+                    </li>
+                    <li class="nav_li">
+                        <a href="/ingresar">INGRESAR</a>
+                    </li>
+                </ul>
+            </div>            
+        </nav>
+    </header>
+
+    <main>
+    <div class="container-flex-paciente">
+        <div class="container_paciente_listar">
+            <br>
+            <h2>Lista de pacientes</h2>
+            <br>
+            <table class="table_container_paciente">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Obra Social</th>
+                        <th scope="col">Alta</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody th:each="paciente: ${pacientes}"> 
+                    <tr>
+                        <th scope="row" th:text="${paciente.nombre}"></th>
+                        <td th:text="${paciente.apellido}"></td>
+                        <td th:text="${paciente.email}"></td>
+                        <td th:text="${paciente.telefono}"></td>
+                        <td th:text="${paciente.obraSocial.nombreOS}"></td>
+                        <td th:text="${paciente.alta}"></td>
+                        <td>
+                            <a th:href= "@{/paciente/modificar/__${paciente.id}__}"> Modificar </a>
+                            <a th:href= "@{/paciente/eliminar/__${paciente.id}__}"> Eliminar </a>
+                        </td>
+            
+                    </tr>   
+            
+                </tbody>
+            </table>
+                
+        </div>
+
     </div>
+       
+</main>
     
 </body>
-</html>
+
+<footer>
+    <div class="container_footer">
+        <div>
+            <h6>© 2023 App Salud - Todos los derechos reservados. Términos y condiciones. Políticas de privacidad.</h6>
+        </div>
+</footer>
+
 
 </html>

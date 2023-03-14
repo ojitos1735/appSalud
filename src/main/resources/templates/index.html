@@ -10,57 +10,51 @@
     </head>
 
 
-    <body>
-        <header>
-            <nav class="container_nav">
-                <div class="navbar">
-                    <ul>
-                        <li class="nav_li">
-                            <a href="/registrarse">REGISTRARSE</a>
-                        </li>
-                        <li class="nav_li">
-                            <a href="/ingresar">INGRESAR</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">PERFIL</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li>
-                                    <a class="dropdown-menu" href="/logout"> CERRAR SESION </a>
-                                </li>
-                            </ul>  
-                        </li>
-                        
-                    </ul>
-                </div>            
-            </nav>
-        </header>
+<body>
+    <header>
+        <nav class="container_nav">
+            <div class="navbar">
+                <ul>
+                    <li class="nav_li">
+                        <a th:href="@{/paciente/registrar}">REGISTRARSE</a>
+                    </li>
+                    <li class="nav_li">
+                        <a href="/ingresar">INGRESAR</a>
+                    </li>
+                </ul>
+            </div>            
+        </nav>
+    </header>
 
         <main>
 
-            <section  class="parallax">
-                <div class="centrado">
-                    <h1>Encuentre profesionales online y reserve su turno</h1> 
-                    <div class="container_form">
-                        <form class="query" action="">
-                            <label for="esp">Especialidad</label>
-                            <select name="especialidades" id="selecEsp">
-                                <option value="cardiologia">CARDIOLOGIA</option>
-                                <option value="clinica">CLINICA</option>
-                                <option value="ginecologia">GINECOLOGIA</option>
-                                <option value="pediatria">PEDIATRIA</option>
-                            </select>
-                            <label for="esp">Obra Social</label>
-                            <select name="obraSocial" id="selecOS">
-                                <option value="osep">OSEP</option>
-                                <option value="osde">OSDE</option>
-                                <option value="osecac">OSECAC</option>
-                                <option value="swissMedical">SWISS MEDICAL</option>
-                            </select>
-                            <input type="button" value="Buscar">
-                        </form>
-                    </div>
-                </div>  
-            </section>
+
+        <section  class="parallax">
+            <div class="centrado">
+                <h1>Encuentre profesionales online y reserve su turno</h1> 
+                <div class="container_form">
+                    <form class="query" action="">
+                        <label for="esp">Especialidad</label>
+                        <select name="especialidades" id="selecEsp">
+                            <option value="cardiologia">CARDIOLOGIA</option>
+                            <option value="clinica">CLINICA</option>
+                            <option value="ginecologia">GINECOLOGIA</option>
+                            <option value="pediatria">PEDIATRIA</option>
+                        </select>
+                        <label for="esp">Obra Social</label>
+                        <select name="idOS" class="select-crear">
+							<option>Seleccionar Obra Social</option>
+							<option 
+							th:each="obraSocial : ${obrasSociales}"
+							th:value="${obraSocial.id}"
+							th:text="${obraSocial.nombreOS}"
+							/>
+						</select>
+                        <input type="button" value="Buscar">
+                    </form>
+                </div>
+            </div>  
+        </section>
 
         </main>
 
