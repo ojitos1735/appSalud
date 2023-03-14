@@ -66,7 +66,7 @@ public class UsuarioServicio implements UserDetailsService {
 
         admin.setRol(Rol.ADMIN);
 
-        usuarioRepositorio.save(admin);
+        adminRepositorio.save(admin);
     }
     
     @Transactional

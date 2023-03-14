@@ -35,7 +35,7 @@ public class PortalControlador {
         return "registro_paciente.html";
     }
 
-    @PostMapping("/registro")
+    /*@PostMapping("/registro")
     public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String password,
 
             String password2, ModelMap modelo, MultipartFile archivo) {
@@ -56,7 +56,7 @@ public class PortalControlador {
         }
 
     }
-
+*/
     @GetMapping("/ingresar")
     public String login(@RequestParam(required = false) String error, ModelMap modelo ) {
 

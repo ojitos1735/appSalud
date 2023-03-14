@@ -64,7 +64,7 @@ public class PacienteControlador {
         return "registro_paciente_modificar.html";
     }
 
-    @PostMapping("/modificar/{id}")
+    @PostMapping("/modificar/{id}") // localhost:8080/paciente/modificar/{id}
     public String modificar(@PathVariable Long id, String nombre, String apellido, String email,
 
             Integer telefono/*, Long idObraSocial*/, ModelMap modelo) {
@@ -80,7 +80,7 @@ public class PacienteControlador {
     }
     
 
-    @RequestMapping(value="/eliminar/{id}",method={RequestMethod.GET,RequestMethod.DELETE})
+    @RequestMapping(value="/eliminar/{id}",method={RequestMethod.GET,RequestMethod.DELETE}) 
     public String eliminar(@PathVariable("id") Long id, ModelMap modelo) {
         try {
             pacienteServicio.borrarPaciente(id);
