@@ -1,3 +1,4 @@
+
 package com.salud.sistema.controladores;
 
 import com.salud.sistema.entidades.Paciente;
@@ -29,6 +30,7 @@ public class PacienteControlador {
     @GetMapping("/registrar")  //localhost:8080/paciente/registrar
     public String registrar(ModelMap modelo) {
         modelo.addAttribute("obrasSociales", obraSocialServicio.listarObrasSociales());
+
         return "registro_paciente.html";
     }
 
@@ -43,6 +45,7 @@ public class PacienteControlador {
         } catch (MiExcepcion ex) {
             modelo.addAttribute("obrasSociales", obraSocialServicio.listarObrasSociales());
             modelo.put("error", ex.getMessage());
+
             return "registro_paciente.html";
         }
     }
@@ -51,6 +54,7 @@ public class PacienteControlador {
     public String listar(ModelMap modelo) {
         List<Paciente> pacientes = pacienteServicio.listarPacientesporApellido();
         modelo.addAttribute("pacientes", pacientes);
+
         return "registro_paciente_listar.html";
     }
 
@@ -62,8 +66,9 @@ public class PacienteControlador {
         return "registro_paciente_modificar.html";
     }
 
-    @PostMapping("/modificar/{id}")
+    @PostMapping("/modificar/{id}") // localhost:8080/paciente/modificar/{id}
     public String modificar(@PathVariable Long id, String nombre, String apellido, String email,
+
             Integer telefono, MultipartFile foto/*, Long idObraSocial*/, ModelMap modelo) {
         try {
             pacienteServicio.modificarPaciente(id, nombre, apellido, email, telefono, foto/*, idObraSocial*/) ;
@@ -77,7 +82,7 @@ public class PacienteControlador {
     }
     
 
-    @RequestMapping(value="/eliminar/{id}",method={RequestMethod.GET,RequestMethod.DELETE})
+    @RequestMapping(value="/eliminar/{id}",method={RequestMethod.GET,RequestMethod.DELETE}) 
     public String eliminar(@PathVariable("id") Long id, ModelMap modelo) {
         try {
             pacienteServicio.borrarPaciente(id);

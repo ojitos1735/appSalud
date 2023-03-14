@@ -30,6 +30,7 @@ public class ProfesionalServicio {
     private ImagenServicio imagenServicio;
     @Autowired
     private ProfesionalRepositorio profesionalRepositorio;
+
     @Autowired
     private ObraSocialRepositorio obraSocialRepositorio;
 
@@ -61,11 +62,13 @@ public class ProfesionalServicio {
         List<Profesional> profesionales = new ArrayList();
         try {
             if (obraSocial == null && especialidad != null) {
+
                 profesionales = profesionalRepositorio.findByEspecialidadOrderByValorConsultaAsc(especialidad);
             }
             if (especialidad != null && obraSocial != null) {
                 profesionales = profesionalRepositorio.findByCubreOSNombreOSAndEspecialidad(obraSocial, especialidad);
             }
+
             if (profesionales.isEmpty()) {
                 return null;
             }
@@ -77,6 +80,7 @@ public class ProfesionalServicio {
         return profesionales;
 
     }
+
 
     @Transactional
     public String bajaProfesional(Long id) throws MiExcepcion {

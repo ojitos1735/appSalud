@@ -11,6 +11,7 @@ body{
     margin: 0;
 }
 
+
 main{
   min-height:80vh;/*importante*/
   position:relative;/*importante*/
@@ -59,6 +60,7 @@ nav ul li a{
 footer{
     background-color: rgb(54, 48, 48);
     margin: 0;
+
     color: #fff;
     padding: 10px;
     text-align: center;
@@ -117,6 +119,7 @@ select {
 }
 
 .parallax{
+
     background-image: url(img/medico.jpg);
     background-repeat: no-repeat;
     background-position: center;
@@ -176,12 +179,14 @@ select {
 
 
 
+
   .container-flex-paciente{
     display: flex;
     place-content: center;
     width: 500px;
     justify-content:center;
     align-content: center;
+
     align-items: center;
     background-color: #fff;
     padding: 20px;
@@ -190,6 +195,7 @@ select {
     border-radius: 20px;
     height: auto;
     box-shadow: 5px 5px 10px rgba(136, 136, 136, 0.526);
+
         
 }
 
@@ -283,6 +289,7 @@ select {
     box-shadow: 2px 2px 8px #888;
 }
 
+
   /* ----TABLAS LISTAR---- */
 
 table.table_container_paciente {
@@ -340,7 +347,7 @@ table.table_container_paciente {
     padding: 2px 8px;
     border-radius: 5px;
   }
-  
+
   
 
 /* ----VISTAS PACIENTE (HISTORIA CLINICA) Y PROFESIONAL (ADMIN) ---- */

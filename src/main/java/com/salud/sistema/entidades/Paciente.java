@@ -22,10 +22,10 @@ public class Paciente extends Usuario implements Serializable {
     @OneToOne
     private ObraSocial obraSocial;
     private String contrasenia;
-    /*
+    
     @OneToMany
     private List<Profesional> profesionales;
-*/
+
     public Paciente(){
         super();
         rol = Rol.PACIENTE;

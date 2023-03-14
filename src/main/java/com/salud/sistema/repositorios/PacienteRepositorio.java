@@ -1,3 +1,4 @@
+
 package com.salud.sistema.repositorios;
 
 import com.salud.sistema.entidades.Paciente;

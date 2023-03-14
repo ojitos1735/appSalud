@@ -1,4 +1,5 @@
 
+
 package com.salud.sistema.controladores;
 
 import com.salud.sistema.excepciones.MiExcepcion;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/obrasocial")
 public class ObraSocialControlador {
+
     @Autowired
     private ObraSocialServicio obraSocialServicio;
      
@@ -21,7 +23,8 @@ public class ObraSocialControlador {
     public String registrar() {
         return "obrasocial_form.html";
     }
-    
+
+
     @PostMapping("/registro")
     public String registro(@RequestParam String nombreOS, ModelMap modelo) throws MiExcepcion{
         try {
@@ -35,4 +38,5 @@ public class ObraSocialControlador {
 
         return "index.html";
     }
+
 }

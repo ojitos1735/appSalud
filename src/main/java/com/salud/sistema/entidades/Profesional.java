@@ -3,9 +3,7 @@ package com.salud.sistema.entidades;
 import com.salud.sistema.enums.Especialidad;
 import com.salud.sistema.enums.Rol;
 import com.salud.sistema.enums.TipoConsulta;
-
 import java.util.List;
-
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,7 +12,6 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,6 +19,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Profesional extends Usuario {
+
 
 
      @Column(name= "Especialidad")
@@ -33,6 +31,7 @@ public class Profesional extends Usuario {
     @JoinTable(name = "profesional_cubreos", joinColumns
             = @JoinColumn(name = "profesional_id"),
             inverseJoinColumns = @JoinColumn(name = "cubreos_id"))
+
 
     private List<ObraSocial> cubreOS;
   

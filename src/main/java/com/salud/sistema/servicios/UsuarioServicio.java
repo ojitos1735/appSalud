@@ -5,6 +5,7 @@ import com.salud.sistema.entidades.Imagen;
 import com.salud.sistema.entidades.Usuario;
 import com.salud.sistema.enums.Rol;
 import com.salud.sistema.excepciones.MiExcepcion;
+
 import com.salud.sistema.repositorios.AdminRepositorio;
 import com.salud.sistema.repositorios.ImagenRepositorio;
 import com.salud.sistema.repositorios.PacienteRepositorio;
@@ -29,6 +30,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
+
 public class UsuarioServicio implements UserDetailsService {
 
     @Autowired
@@ -116,6 +118,7 @@ public class UsuarioServicio implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
+
         Usuario usuario = buscarUsuarioPorEmail(email);
 
         if (usuario != null) {
@@ -148,6 +151,7 @@ public class UsuarioServicio implements UserDetailsService {
         } 
         return usuario;
     }
+
     
     public Usuario buscarUsuarioPorId(Long id) {
         Usuario usuario = pacienteRepositorio.buscarPorId(id);

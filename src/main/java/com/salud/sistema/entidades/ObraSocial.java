@@ -22,6 +22,7 @@ public class ObraSocial implements Serializable {
     private Long id;
 
 
+
     //@NotEmpty
      private String nombreOS;
 

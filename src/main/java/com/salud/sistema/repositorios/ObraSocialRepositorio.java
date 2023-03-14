@@ -3,6 +3,7 @@ package com.salud.sistema.repositorios;
 
 import com.salud.sistema.entidades.ObraSocial;
 
+
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,6 +17,7 @@ public interface ObraSocialRepositorio extends JpaRepository<ObraSocial, Long>{
     @Query("SELECT o FROM ObraSocial o WHERE o.nombreOS = :nombre")
     public ObraSocial buscarPorNombre(@Param("nombre") String nombre);
     
+
 
       
     

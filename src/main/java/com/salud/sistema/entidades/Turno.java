@@ -1,5 +1,6 @@
 package com.salud.sistema.entidades;
 
+
 import com.salud.sistema.enums.Dia;
 import com.salud.sistema.enums.EstadoTurno;
 import com.salud.sistema.enums.TipoConsulta;
@@ -25,6 +26,7 @@ public class Turno {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     @ManyToOne
     private Paciente paciente;
 
@@ -43,6 +45,6 @@ public class Turno {
     private boolean disponibilidad;
 
     private EstadoTurno estadoTurno;
-    
+
     private Double puntaje;
 }

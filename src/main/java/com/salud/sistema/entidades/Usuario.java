@@ -12,7 +12,6 @@ import javax.persistence.InheritanceType;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
-
 import lombok.Data;
 
 @MappedSuperclass
@@ -28,6 +27,7 @@ public abstract class Usuario {
 
     //@NotEmpty
     protected String nombre;
+
     // @NotEmpty
     protected String apellido;
 
@@ -48,4 +48,5 @@ public abstract class Usuario {
     protected Boolean alta;
 
     protected Rol rol;
+
 }

@@ -27,6 +27,7 @@ public class PortalControlador {
     private ObraSocialServicio obraSocialServicio;
     
     @GetMapping("/")
+
     public String index(ModelMap modelo) {
         modelo.addAttribute("obrasSociales", obraSocialServicio.listarObrasSociales());
         return "index.html";
@@ -34,11 +35,13 @@ public class PortalControlador {
 
     @GetMapping("/registrarse")
     public String registrar() {
+
         return "registro_paciente.html";
     }
 
-    @PostMapping("/registro")
+    /*@PostMapping("/registro")
     public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String password,
+
             String password2, ModelMap modelo, MultipartFile archivo) {
 
         try {
@@ -57,13 +60,14 @@ public class PortalControlador {
         }
 
     }
-
+*/
     @GetMapping("/ingresar")
     public String login(@RequestParam(required = false) String error, ModelMap modelo ) {
 
         if (error != null) {
             modelo.put("error", "Usuario o Contraseña invalidos!");
         }
+
 
         return "ingresar.html";
     }

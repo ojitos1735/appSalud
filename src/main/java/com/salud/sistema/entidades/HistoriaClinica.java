@@ -25,10 +25,15 @@ public class HistoriaClinica implements Serializable {
     @OneToOne
     private Paciente paciente;
 
+
    // private List<DetalleHC> detalles;
     //habra un profesional de cabecera en la historia clinica lo cual en el detalles otros profesionales iran agregando informacion.
 
     @OneToMany
     private List<DetalleHC> detalles;
     
+    @OneToMany
+    private List<Profesional> profesionales;
+    
+
 }

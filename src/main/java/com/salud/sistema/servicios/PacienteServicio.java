@@ -1,3 +1,4 @@
+
 package com.salud.sistema.servicios;
 
 import com.salud.sistema.entidades.HistoriaClinica;
@@ -32,12 +33,14 @@ public class PacienteServicio {
     @Autowired
     private ImagenServicio imagenServicio;
 
+
     @Transactional
     public void crearPaciente(String nombre, String apellido, String email,
             String contrasenia, String contrasenia2, Integer dni,
             Integer telefono, Long idObraSocial, MultipartFile foto) throws MiExcepcion {
 
         validarDatos(nombre, apellido, email, contrasenia, contrasenia2, dni, telefono);
+
 
         Paciente paciente = new Paciente();
 
@@ -79,6 +82,7 @@ public class PacienteServicio {
             MultipartFile foto /* , Long idObraSocial */) throws MiExcepcion {
 
         Paciente paciente = repoPaciente.findById(id).get();
+
         if (paciente == null) {
             throw new MiExcepcion("No se pudo encontrar el paciente");
         } else {
@@ -86,6 +90,7 @@ public class PacienteServicio {
             paciente.setApellido(apellido);
             paciente.setEmail(email);
             paciente.setTelefono(telefono);
+
 
             // ObraSocial obraSocial = repoObraSocial.findById(idObraSocial).get();
             // paciente.setObraSocial(obraSocial);
@@ -109,11 +114,13 @@ public class PacienteServicio {
     }
 
     @Transactional
+
     public void borrarPaciente(Long id) throws MiExcepcion {
         Paciente paciente = repoPaciente.getById(id);
         paciente.setAlta(Boolean.FALSE);
         repoPaciente.save(paciente);
     }
+
 
     private void validarDatos(String nombre, String apellido, String email, String contrasenia,
             String contrasenia2, Integer dni, Integer telefono) throws MiExcepcion {
