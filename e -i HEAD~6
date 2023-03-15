@@ -1,0 +1,102 @@
+[33m75f2ebd[m[33m ([m[1;36mHEAD -> [m[1;32mlucas[m[33m, [m[1;31morigin/lucas[m[33m)[m actualizacion developer
+[33m231af34[m archivos eliminados
+[33m9d880a9[m agregado de boton logout en index
+[33m7c66c20[m[33m ([m[1;31morigin/developer[m[33m)[m Merge pull request #30 from ojitos1735/any
+[33m3705f16[m modificación vistas
+[33ma84ecea[m fondos y html paciente listar y modificar
+[33m5e0a153[m[33m ([m[1;32mdeveloper[m[33m)[m logOut y vistas
+[33m3e9350d[m Merge pull request #28 from ojitos1735/fatima
+[33mecd33d7[m[33m ([m[1;31morigin/fatima[m[33m)[m Se elimina target
+[33me539ecc[m Actualizo desde developer
+[33m4bc7acf[m Completar page_profesional
+[33me37322b[m Merge pull request #27 from ojitos1735/gustavo
+[33ma5188a1[m[33m ([m[1;31morigin/gustavo[m[33m)[m se agrego cambios de obra social en profesionalControlador
+[33mf705a88[m clean pull developer
+[33m8c0bc8c[m errores
+[33m08ac0b3[m probando3
+[33m6d43cf9[m Merge pull request #26 from ojitos1735/gustavo
+[33md308328[m se realizo cambios en entidad turno y crud de detalleHC
+[33mbdfdbaf[m Se agrega imagen a Paciente
+[33m95c6413[m Merge pull request #25 from ojitos1735/any
+[33mb38da9a[m[33m ([m[1;31morigin/any[m[33m)[m pages paciente y profesional - modificacion carga de datos paciente y profesional
+[33m3491a9d[m .
+[33m38cc9d9[m Se resuelven algunos problemas de conexión con las vistas
+[33md87c725[m Merge pull request #24 from ojitos1735/any
+[33mdb7d2bf[m vistas principales conectadas
+[33m73becb1[m Merge pull request #22 from ojitos1735/any
+[33m5b0d869[m ult actualización - app run
+[33m8a86aa1[m imagen
+[33m1c6ccd7[m Merge branch 'any' of https://github.com/ojitos1735/appSalud into any
+[33m71571d1[m actualización imagen
+[33m7566aa4[m Merge branch 'developer' into any
+[33medad84e[m imagen
+[33m8a60eea[m Merge branch 'fatima' of https://github.com/ojitos1735/appSalud into fatima
+[33med97625[m Actualización desde developer
+[33mca972b0[m probando2
+[33m42fb692[m probando
+[33m3a9e5b1[m Merge pull request #18 from ojitos1735/fatima
+[33mc8b715a[m Merge branch 'developer' into fatima
+[33mcf481c4[m Conexión de vistas de paciente
+[33m29810fa[m Merge branch 'fatima' of https://github.com/ojitos1735/appSalud into fatima
+[33m0ce3d63[m Merge branch 'developer' of https://github.com/ojitos1735/appSalud into any
+[33maf935dd[m[33m ([m[1;31morigin/resguardo---Any-(no-mergear)[m[33m)[m resguardo
+[33m566ef60[m Merge pull request #17 from ojitos1735/gustavo
+[33mfb13610[m se soluciono problema con el pom
+[33m6d46391[m Merge branch 'gustavo' of https://github.com/ojitos1735/appSalud into gustavo
+[33m4a22649[m se soluciono error en el pom
+[33m9ec6948[m Conexión de vistas nuevas y corrección de errores
+[33m99aabae[m Merge pull request #16 from ojitos1735/gustavo
+[33m93d025e[m Merge branch 'developer' into gustavo
+[33m5e5d32f[m se arreglaron errores en crud profesional
+[33mf040369[m actualizacion de crud profesional
+[33m599fc5a[m Merge pull request #13 from ojitos1735/juani
+[33me2c5050[m[33m ([m[1;31morigin/juani[m[33m)[m Merge branch 'developer' into juani
+[33m92651ac[m Merge branch 'developer' into juani
+[33mf79c293[m Merge pull request #12 from ojitos1735/gustavo
+[33ma1879df[m Merge branch 'developer' into gustavo
+[33m2e8e8e5[m Merge pull request #15 from ojitos1735/fatima
+[33mddb6d4a[m Merge branch 'developer' into fatima
+[33m5749da4[m Merge pull request #7 from ojitos1735/any
+[33m276c329[m Vistas Spring 3
+[33m12357fd[m probando
+[33ma476587[m probando
+[33m31bb34e[m nuevos cambios en spring security
+[33m23daac4[m se realizo crud de turnos
+[33mb0cf47c[m se realizo crud de turnos
+[33m2b55ea4[m profesional controlador modificado
+[33m8c2441b[m Se agregan archivos de seguridad y contraseñas a Paciente
+[33m134b00d[m fix
+[33mbbcb085[m Merge branch 'developer' of https://github.com/ojitos1735/appSalud into any
+[33m0dffce0[m vista - spring 2
+[33m298c036[m crud profesional
+[33mfd67978[m Agregando Usuario
+[33mf1e482e[m primer commit
+[33m798f91e[m Merge pull request #8 from ojitos1735/fatima
+[33mc109ae0[m Merge pull request #11 from ojitos1735/lucas
+[33ma8344b2[m Add files via upload
+[33ma085ecf[m Actualización developer
+[33md0cacec[m actualizacion import
+[33m51f37d5[m Sin target
+[33mc587c10[m Se completa CRUD Paciente
+[33m24135be[m CRUD paciente
+[33mc70f168[m Subida de nuevo
+[33m949d8ee[m .
+[33mff1eb9c[m CRUD Paciente completo
+[33md0ec202[m Mostrar y modificar de Paciente completado
+[33m8c6ae2f[m Creacion de paciente completa
+[33ma82e855[m Merge pull request #6 from ojitos1735/any
+[33m4d14912[m Merge pull request #4 from ojitos1735/gustavo
+[33mdf8c2dd[m primer vista - index
+[33mdf89c39[m CRUD Paciente casi completo con algunas validaciones
+[33mf2685ea[m se realizo la query de busqueda de una lista de profesionales segun obra social y especialidad
+[33m9dc95e2[m Creación de Paciente y ObraSocial
+[33m50d755c[m cambios parciales para la busqueda de profesionales
+[33m454e0aa[m Comienzo CRUD Paciente
+[33m22a2669[m Merge pull request #3 from ojitos1735/any
+[33m6076971[m actualización desde UML
+[33m2de11e1[m Se agregar entidades y enums
+[33mf814ae0[m Merge pull request #2 from ojitos1735/any
+[33maa43a6b[m actualización dependencias
+[33m54d91dd[m Merge pull request #1 from ojitos1735/any
+[33m9826de0[m modificación dependencias y pom
+[33m38a0a73[m Initial commit

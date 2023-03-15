@@ -37,7 +37,7 @@ public class PacienteServicio {
     @Transactional
     public void crearPaciente(String nombre, String apellido, String email,
             String contrasenia, String contrasenia2, Integer dni,
-            Integer telefono, Long idObraSocial, MultipartFile foto) throws MiExcepcion {
+            Integer telefono, Long idOS, MultipartFile foto) throws MiExcepcion {
 
         validarDatos(nombre, apellido, email, contrasenia, contrasenia2, dni, telefono);
 
@@ -46,7 +46,7 @@ public class PacienteServicio {
 
         HistoriaClinica historiaClinica = servicioHC.crearHistoriaClinica();
 
-        ObraSocial obraSocial = servicioObraSocial.buscarPorId(idObraSocial);
+        ObraSocial obraSocial = servicioObraSocial.buscarPorId(idOS);
 
         Imagen imagen = imagenServicio.guardar(foto);
 

@@ -28,7 +28,9 @@
         <section class="container-vista-paciente">
             
             <div class="parent">
-                <h2>Paciente: <th scope="row" th:text="${paciente.nombre}${paciente.apellido}"> </th><br>
+                <h2>Paciente: 
+                    <th scope="row" th:text="${paciente.nombre} + ',' +${paciente.apellido}"> </th>
+                    <br>
                         <td th:text="${paciente.email}"></td><br>
                         <td th:text="${paciente.telefono}"></td><br>
                         <td th:text="${paciente.obraSocial.nombreOS}"></td><br>
@@ -53,7 +55,7 @@
                 
                 <div class="btn2">
                     <button type="submit" class="btn" id="boton">
-                    <a th:href= "@{}"> Agregar detalle </a>
+                    <a th:href= "@{/}"> Agregar detalle </a>
                     </button>
                 </div>
 

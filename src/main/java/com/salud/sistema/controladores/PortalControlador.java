@@ -19,15 +19,12 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("/")
 public class PortalControlador {
-
     @Autowired
     private UsuarioServicio usuarioServicio;
-
     @Autowired
     private ObraSocialServicio obraSocialServicio;
     
     @GetMapping("/")
-
     public String index(ModelMap modelo) {
         modelo.addAttribute("obrasSociales", obraSocialServicio.listarObrasSociales());
         return "index.html";
@@ -35,7 +32,6 @@ public class PortalControlador {
 
     @GetMapping("/registrarse")
     public String registrar() {
-
         return "registro_paciente.html";
     }
 
@@ -58,7 +54,6 @@ public class PortalControlador {
 
             return "registro_paciente.html";
         }
-
     }
 */
     @GetMapping("/ingresar")
@@ -67,12 +62,10 @@ public class PortalControlador {
         if (error != null) {
             modelo.put("error", "Usuario o Contraseña invalidos!");
         }
-
-
         return "ingresar.html";
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_PROFESIONAL', 'ROLE_ADMIN')")
     @GetMapping("/inicio")
     public String inicio(HttpSession session) {
         
@@ -81,7 +74,6 @@ public class PortalControlador {
         if (logueado.getRol().toString().equals("ADMIN")) {
             return "redirect:/admin/dashboard";
         }
-        
            return "index.html";
     }
 

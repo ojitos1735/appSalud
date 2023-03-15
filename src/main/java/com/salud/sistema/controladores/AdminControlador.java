@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin")
 public class AdminControlador {
     
-   @GetMapping("/dashboard")
+   @GetMapping("/dashboard") //localhost:8080/admin/dashboard
    public String panelAdministrativo(){
        return "panel.html";
    }

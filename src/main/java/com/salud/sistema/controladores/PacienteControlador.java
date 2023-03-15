@@ -36,9 +36,9 @@ public class PacienteControlador {
 
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre, @RequestParam String apellido, @RequestParam String email, 
-            @RequestParam String contrasenia,@RequestParam Integer dni, @RequestParam Integer telefono, 
+            @RequestParam String contrasenia,@RequestParam String contrasenia2, @RequestParam Integer dni, @RequestParam Integer telefono, 
             @RequestParam Long idOS, ModelMap modelo, MultipartFile foto) {
-        try {pacienteServicio.crearPaciente(nombre, apellido, email, contrasenia, contrasenia, dni, telefono, idOS, foto);
+        try {pacienteServicio.crearPaciente(nombre, apellido, email, contrasenia, contrasenia2, dni, telefono, idOS, foto);
 
             modelo.put("exito", "El paciente fue registrado exitosamente");
             return "redirect:/";

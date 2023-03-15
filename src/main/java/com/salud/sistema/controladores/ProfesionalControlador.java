@@ -61,7 +61,16 @@ public class ProfesionalControlador {
 
 
     @PostMapping("/registro")
-    public String createdProfesional(@RequestParam String nombre,@RequestParam String apellido,@RequestParam Integer dni,@RequestParam String email,@RequestParam Integer matricula,@RequestParam Integer telefono,@RequestParam Especialidad especialidad,@RequestParam String contrasenia,MultipartFile foto,ModelMap modelo) {
+    public String createdProfesional(
+            @RequestParam String nombre,
+            @RequestParam String apellido,
+            @RequestParam String email,
+            @RequestParam Integer dni,
+            @RequestParam Integer telefono,
+            @RequestParam Integer matricula,
+            @RequestParam Especialidad especialidad,
+            @RequestParam String contrasenia,
+            MultipartFile foto,ModelMap modelo) {
        
       try {
           profesionalServicio.crearProfesional(nombre, apellido, dni, email, matricula, telefono, especialidad, contrasenia,foto);
