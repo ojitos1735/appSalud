@@ -1,11 +1,11 @@
 package com.salud.sistema.controladores;
 
-
 import com.salud.sistema.entidades.Usuario;
 import com.salud.sistema.excepciones.MiExcepcion;
 import com.salud.sistema.servicios.UsuarioServicio;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -28,9 +28,9 @@ public class PortalControlador {
         return "index.html";
     }
 
-    @GetMapping("/registrar")
+    @GetMapping("/registrarse")
     public String registrar() {
-        return "registro.html";
+        return "registro_paciente.html";
     }
 
     @PostMapping("/registro")
@@ -49,22 +49,22 @@ public class PortalControlador {
             modelo.put("nombre", nombre);
             modelo.put("email", email);
 
-            return "registro.html";
+            return "registro_paciente.html";
         }
 
     }
 
-    @GetMapping("/login")
+    @GetMapping("/ingresar")
     public String login(@RequestParam(required = false) String error, ModelMap modelo ) {
 
         if (error != null) {
             modelo.put("error", "Usuario o Contraseña invalidos!");
         }
 
-        return "login.html";
+        return "ingresar.html";
     }
 
-
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/inicio")
     public String inicio(HttpSession session) {
         

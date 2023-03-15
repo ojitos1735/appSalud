@@ -1,3 +1,4 @@
+C:\Proyectos\EGG\src\main\java\com\salud\sistema\controladores\ImagenControlador.java
 C:\Proyectos\EGG\src\main\java\com\salud\sistema\servicios\ObraSocialServicio.java
 C:\Proyectos\EGG\src\main\java\com\salud\sistema\entidades\ObraSocial.java
 C:\Proyectos\EGG\src\main\java\com\salud\sistema\servicios\ProfesionalServicio.java
@@ -10,6 +11,7 @@ C:\Proyectos\EGG\src\main\java\com\salud\sistema\SistemaApplication.java
 C:\Proyectos\EGG\src\main\java\com\salud\sistema\enums\Rol.java
 C:\Proyectos\EGG\src\main\java\com\salud\sistema\controladores\PacienteControlador.java
 C:\Proyectos\EGG\src\main\java\com\salud\sistema\repositorios\ProfesionalRepositorio.java
+C:\Proyectos\EGG\src\main\java\com\salud\sistema\controladores\DetalleHCControlador.java
 C:\Proyectos\EGG\src\main\java\com\salud\sistema\repositorios\ImagenRepositorio.java
 C:\Proyectos\EGG\src\main\java\com\salud\sistema\controladores\ProfesionalControlador.java
 C:\Proyectos\EGG\src\main\java\com\salud\sistema\excepciones\MiExcepcion.java
@@ -20,8 +22,10 @@ C:\Proyectos\EGG\src\main\java\com\salud\sistema\SeguridadWeb.java
 C:\Proyectos\EGG\src\main\java\com\salud\sistema\repositorios\PacienteRepositorio.java
 C:\Proyectos\EGG\src\main\java\com\salud\sistema\entidades\Turno.java
 C:\Proyectos\EGG\src\main\java\com\salud\sistema\enums\EstadoTurno.java
+C:\Proyectos\EGG\src\main\java\com\salud\sistema\repositorios\DetalleHCRepositorio.java
 C:\Proyectos\EGG\src\main\java\com\salud\sistema\repositorios\AdminRepositorio.java
 C:\Proyectos\EGG\src\main\java\com\salud\sistema\DTO\ProfesionalDTO.java
+C:\Proyectos\EGG\src\main\java\com\salud\sistema\servicios\DetalleHCServicio.java
 C:\Proyectos\EGG\src\main\java\com\salud\sistema\entidades\Admin.java
 C:\Proyectos\EGG\src\main\java\com\salud\sistema\servicios\UsuarioServicio.java
 C:\Proyectos\EGG\src\main\java\com\salud\sistema\entidades\HistoriaClinica.java
@@ -35,5 +39,4 @@ C:\Proyectos\EGG\src\main\java\com\salud\sistema\controladores\PortalControlador
 C:\Proyectos\EGG\src\main\java\com\salud\sistema\entidades\DetalleHC.java
 C:\Proyectos\EGG\src\main\java\com\salud\sistema\entidades\Profesional.java
 C:\Proyectos\EGG\src\main\java\com\salud\sistema\entidades\Paciente.java
-C:\Proyectos\EGG\src\main\java\com\salud\sistema\entidades\obSocialProfesional.java
 C:\Proyectos\EGG\src\main\java\com\salud\sistema\repositorios\ObraSocialRepositorio.java

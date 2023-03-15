@@ -1,15 +1,18 @@
 package com.salud.sistema.servicios;
 
 import com.salud.sistema.entidades.Admin;
+import com.salud.sistema.entidades.Imagen;
 import com.salud.sistema.entidades.Usuario;
 import com.salud.sistema.enums.Rol;
 import com.salud.sistema.excepciones.MiExcepcion;
 import com.salud.sistema.repositorios.AdminRepositorio;
+import com.salud.sistema.repositorios.ImagenRepositorio;
 import com.salud.sistema.repositorios.PacienteRepositorio;
 import com.salud.sistema.repositorios.ProfesionalRepositorio;
 import com.salud.sistema.repositorios.UsuarioRepositorio;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +38,9 @@ public class UsuarioServicio  {
     @Autowired
     private ProfesionalRepositorio profesionalRepositorio;
 
+    @Autowired
+    private ImagenServicio imagenServicio;
+    
     @Transactional
     public void registrar(MultipartFile archivo, String nombre, String email, String password, String password2) throws MiExcepcion {
 
@@ -44,14 +50,50 @@ public class UsuarioServicio  {
 
         admin.setNombre(nombre);
         admin.setEmail(email);
-
+        
         admin.setContrasenia(new BCryptPasswordEncoder().encode(password));
+
+        Imagen imagen = imagenServicio.guardar(archivo);
+                
+        admin.setImagen(imagen);
 
         admin.setRol(Rol.ADMIN);
 
         usuarioRepositorio.save(admin);
     }
+    
+    @Transactional
+    public void actualizar(MultipartFile archivo, String idUsuario, String nombre, String email, String contrasenia, String contrasenia2) throws MiExcepcion {
 
+        validar(nombre, email, contrasenia, contrasenia2);
+
+        Usuario respuesta = buscarUsuarioPorEmail(email);
+        if (respuesta !=null) {
+
+            Usuario usuario = respuesta;
+            usuario.setNombre(nombre);
+            usuario.setEmail(email);
+
+            usuario.setContrasenia(new BCryptPasswordEncoder().encode(contrasenia));
+            
+            usuario.setRol(Rol.ADMIN);
+         
+            String idImagen = null;
+            
+            if (usuario.getImagen() != null) {
+                idImagen = usuario.getImagen().getId();
+            }
+            
+            Imagen imagen = imagenServicio.actualizar(archivo, idImagen);
+            
+            usuario.setImagen(imagen);
+            
+            usuarioRepositorio.save(usuario);
+        }
+
+    }
+    
+    
     private void validar(String nombre, String email, String password, String password2) throws MiExcepcion {
 
         if (nombre.isEmpty() || nombre == null) {
@@ -80,4 +122,6 @@ public class UsuarioServicio  {
         } 
         return usuario;
     }
+
+    
 }

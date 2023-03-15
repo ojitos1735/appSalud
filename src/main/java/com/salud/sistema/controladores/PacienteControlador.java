@@ -28,21 +28,20 @@ public class PacienteControlador {
     @GetMapping("/registrar")  //localhost:8080/paciente/registrar
     public String registrar(ModelMap modelo) {
         modelo.addAttribute("obrasSociales", obraSocialServicio.listarObrasSociales());
-        return "paciente_form.html";
+        return "registro_paciente.html";
     }
 
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre, @RequestParam String apellido, @RequestParam String email, 
-            @RequestParam String contrasenia, @RequestParam String contrasenia2, 
-            @RequestParam Integer dni, @RequestParam Integer telefono, @RequestParam Long idOS, ModelMap modelo) {
-        try {
-            pacienteServicio.crearPaciente(nombre, apellido, email, contrasenia, contrasenia2, dni, telefono, idOS);
+            @RequestParam String contrasenia,@RequestParam Integer dni, @RequestParam Integer telefono, @RequestParam Long idOS, ModelMap modelo) {
+        try {pacienteServicio.crearPaciente(nombre, apellido, email, contrasenia, contrasenia, dni, telefono, idOS);
+
             modelo.put("exito", "El paciente fue registrado exitosamente");
             return "redirect:/";
         } catch (MiExcepcion ex) {
             modelo.addAttribute("obrasSociales", obraSocialServicio.listarObrasSociales());
             modelo.put("error", ex.getMessage());
-            return "paciente_form.html";
+            return "registro_paciente.html";
         }
     }
     
@@ -50,25 +49,28 @@ public class PacienteControlador {
     public String listar(ModelMap modelo) {
         List<Paciente> pacientes = pacienteServicio.listarPacientes();
         modelo.addAttribute("pacientes", pacientes);
-        return "paciente_lista.html";
+        return "registro_paciente_listar.html";
     }
 
     @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable Long id, ModelMap modelo) {
+        modelo.addAttribute("obrasSociales", obraSocialServicio.listarObrasSociales());
         modelo.put("paciente", pacienteServicio.getOne(id));
 
-        return "paciente_modificar.html";
+        return "registro_paciente_modificar.html";
     }
 
     @PostMapping("/modificar/{id}")
     public String modificar(@PathVariable Long id, String nombre, String apellido, String email,
-            Integer telefono, Long idObraSocial, ModelMap modelo) {
+            Integer telefono/*, Long idObraSocial*/, ModelMap modelo) {
         try {
-            pacienteServicio.modificarPaciente(id, nombre, apellido, email, telefono, idObraSocial);
+            pacienteServicio.modificarPaciente(id, nombre, apellido, email, telefono/*, idObraSocial*/) ;
+
             return "redirect:../listar";
+
         } catch (MiExcepcion ex) {
             modelo.put("error", ex.getMessage());
-            return "paciente_modificar.html";
+            return "registro_paciente_modificar.html";
         }
     }
     

@@ -4,15 +4,24 @@ import com.salud.sistema.enums.Rol;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+
 import javax.persistence.Column;
+
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+
+import javax.validation.constraints.NotEmpty;
+
 
 import lombok.Data;
 
@@ -33,6 +42,7 @@ public abstract class Usuario {
     protected String apellido;
 
 
+
     @NotEmpty
     @Email
     protected String email;
@@ -50,11 +60,33 @@ public abstract class Usuario {
    /* @NotEmpty
     protected Imagen imagen;  
     */
+
+    //@NotEmpty
+    //@Email
+
+    @OneToOne
+    protected Imagen imagen;
+    
+     
+//    private Imagen imagen;
+//
+//    public Imagen getImagen() {
+//        return imagen;
+//    }
+//
+//    public void setImagen(Imagen imagen) {
+//        this.imagen = imagen;
+//    }
+ 
+    // @NotNull
+
     protected Boolean alta;
     
     @NotNull
     protected Rol rol;
 
+
 }
+
 
 

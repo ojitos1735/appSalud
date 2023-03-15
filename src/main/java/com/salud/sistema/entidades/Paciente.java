@@ -1,4 +1,5 @@
 package com.salud.sistema.entidades;
+
 import com.salud.sistema.enums.Rol;
 import java.io.Serializable;
 import java.util.List;
@@ -7,6 +8,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Data
@@ -18,7 +21,11 @@ public class Paciente extends Usuario implements Serializable {
     
     @OneToOne
     private ObraSocial obraSocial;
-
+    private String contrasenia;
+    /*
+    @OneToMany
+    private List<Profesional> profesionales;
+*/
     public Paciente(){
         super();
         rol = Rol.PACIENTE;

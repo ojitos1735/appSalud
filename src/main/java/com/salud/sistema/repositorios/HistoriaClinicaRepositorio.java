@@ -12,7 +12,11 @@ import org.springframework.stereotype.Repository;
 public interface HistoriaClinicaRepositorio extends JpaRepository<HistoriaClinica, Long> {
     //Busca las historias clinicas por paciente
 
-
+       public HistoriaClinica findByPacienteId(long pacienteId);
+    
+    
+    
+    
     /* @Query("SELECT h FROM HistoriaClinica h WHERE h.paciente.dni = :dni")
     public Paciente buscarPorPaciente (@Param ("dni") Integer dni);
      */

@@ -51,7 +51,11 @@ public class ProfesionalControlador {
             e.getMessage();
         }
 
-       return "profesional_lista.html";
+       return "registro_profesional_listar.html";
     }
+    
+    
+    
+    
 }
 
