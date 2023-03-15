@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,98 +24,97 @@
         </nav>
     </header>
 
-
-	<main>
-		<section class="container-flex-paciente">
-			<div class="formulario" >
-				
-				<form class="form"
-				th:action="@{/paciente/modificar/__${paciente.id}__}"
-				method="POST"
-				enctype="multipart/form-data"
-				id="formu"
-						>
+		<main>
+			<section class="container-flex-paciente">
+				<div class="formulario">
+					<form
+						class="form"
+						th:action="@{/paciente/modificar/__${paciente.id}__}"
+						method="POST"
+						enctype="multipart/form-data"
+						id="formu"
+					>
 						<input hidden th:value="${id}" name="id" />
 
 						<h2 class="titulo-seccion">MODIFIQUE SUS DATOS</h2>
 
-					<div class="label">
-						<label class="subtitulo-label">Nombre: </label>
-						<input
-							type="text"
-							class="form-input"
-							name="nombre"
-							placeholder="Ingresar Nombre"
-							th:value="${paciente.nombre}"
-							/>
-					</div>
-					<div class="label">
-						<label class="subtitulo-label">Apellido: </label>
-						<input
-							type="text"
-							class="form-input"
-							name="apellido"
-							placeholder="Ingresar apellido"
-							th:value="${paciente.apellido}"
-							/>
-					</div>
-					<div class="label">
-						<label class="subtitulo-label">Email</label>
-						<input
-							type="text"
-							class="form-input"
-							name="email"
-							placeholder="Ingresar Email"
-							th:value="${paciente.email}"
-							/>
-					</div>
-					<div class="label">
-						<label class="subtitulo-label">DNI: </label>
-						<input
-							type="text"
-							class="form-input"
-							name="DNI"
-							placeholder="Ingresar DNI"
-							th:value="${paciente.Dni}"
-							/>
-					</div>
-					<div class="label">
-						<label class="subtitulo-label">Telefono</label>
-						<input
-							type="text"
-							class="form-input"
-							name="telefono"
-							placeholder="Ingrese telefono"
-							th:value="${paciente.telefono}"
-							/>
-					</div>
-
-					<!--
 						<div class="label">
-							<label class="subtitulo-label" >Obra Social</label>
+							<label class="subtitulo-label">Nombre: </label>
+							<input
+								type="text"
+								class="form-input"
+								name="nombre"
+								placeholder="Ingresar Nombre"
+								th:value="${paciente.nombre}"
+							/>
+						</div>
+						<div class="label">
+							<label class="subtitulo-label">Apellido: </label>
+							<input
+								type="text"
+								class="form-input"
+								name="apellido"
+								placeholder="Ingresar apellido"
+								th:value="${paciente.apellido}"
+							/>
+						</div>
+						<div class="label">
+							<label class="subtitulo-label">Email</label>
+							<input
+								type="text"
+								class="form-input"
+								name="email"
+								placeholder="Ingresar Email"
+								th:value="${paciente.email}"
+							/>
+						</div>
+						<div class="label">
+							<label class="subtitulo-label">DNI: </label>
+							<input
+								type="text"
+								class="form-input"
+								name="DNI"
+								placeholder="Ingresar DNI"
+								th:value="${paciente.Dni}"
+							/>
+						</div>
+						<div class="label">
+							<label class="subtitulo-label">Telefono</label>
+							<input
+								type="text"
+								class="form-input"
+								name="telefono"
+								placeholder="Ingrese telefono"
+								th:value="${paciente.telefono}"
+							/>
+						</div>
+
+						<!--	<div class="label">
+							<label class="subtitulo-label">Obra Social</label>
 							<select name="idOS" class="select-crear">
 								<option>Seleccionar Obra Social</option>
-								<option 
-								th:each="obraSocial : ${obrasSociales}"
-								th:value="${obraSocial.id}"
-								th:text="${obraSocial.nombreOS}"
+								<option selected th:value="${paciente.obraSocial.nombreOS}" />
+								<option
+									th:each="obraSocial : ${obrasSociales}"
+									th:value="${obraSocial.id}"
+									th:text="${obraSocial.nombreOS}"
 								/>
 							</select>
 						</div>
-					
-					-->
-	
-					
-					<div class="btn-div">
-						<button type="submit" class="btn" id="boton">
-							<a href=""></a>
-							ACTUALIZAR DATOS
-						</button><br>
-					</div>
-				</form>
+-->
+						<div class="subtitulo-label">
+							<label class="subtitulo-label">Archivo</label>
+							<input type="file" class="form-control" name="archivo" />
+						</div>
 
-				<!--
-						
+						<div class="btn-div">
+							<button type="submit" class="btn" id="boton">
+								<a href=""></a>
+								ACTUALIZAR DATOS</button
+							><br />
+						</div>
+					</form>
+
 					<div th:if="${exito}!=null">
 						<div class="card-body">
 							<h5 class="card-title">Exito!</h5>
@@ -127,33 +127,31 @@
 							<p class="card-text" th:text="${error}"></p>
 						</div>
 					</div>
-					
-					-->
 
-			<section id="btn_volver" class="text-center container">
-				<div class="row mt-3">
-					<div class="divVolver">
-						<a th:href="/" class="btn btn-secondary my-2 botonVolver botones"
-							>Volver</a
-						>
-					</div>
+					<section id="btn_volver" class="text-center container">
+						<div class="row mt-3">
+							<div class="divVolver">
+								<a
+									th:href="@{/}"
+									class="btn btn-secondary my-2 botonVolver botones"
+									>Volver</a
+								>
+							</div>
+						</div>
+					</section>
 				</div>
 			</section>
+		</main>
+	</body>
 
-
+	<footer>
+		<div class="container_footer">
+			<div>
+				<h6>
+					© 2023 App Salud - Todos los derechos reservados. Términos y
+					condiciones. Políticas de privacidad.
+				</h6>
 			</div>
-		</section>
-	</main>
-</body>
-	
-		<footer>
-			<div class="container_footer">
-				<div>
-					<h6>© 2023 App Salud - Todos los derechos reservados. Términos y condiciones. Políticas de privacidad.</h6>
-				</div>
-		</footer>
-		
-
-
-
-
+		</div>
+	</footer>
+</html>
