@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
@@ -42,6 +43,7 @@ public abstract class Usuario {
     protected Integer telefono;
     
     @OneToOne
+    @JoinColumn(name = "imagen_id")
     protected Imagen imagen;    
  
     // @NotNull

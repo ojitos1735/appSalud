@@ -35,7 +35,7 @@ public class PacienteServicio {
     @Transactional
     public void crearPaciente(String nombre, String apellido, String email,
             String contrasenia, String contrasenia2, Integer dni,
-            Integer telefono, Long idObraSocial, MultipartFile foto) throws MiExcepcion {
+            Integer telefono, Long idObraSocial, MultipartFile archivo) throws MiExcepcion {
 
         validarDatos(nombre, apellido, email, contrasenia, contrasenia2, dni, telefono);
 
@@ -45,8 +45,8 @@ public class PacienteServicio {
 
         ObraSocial obraSocial = servicioObraSocial.buscarPorId(idObraSocial);
 
-        Imagen imagen = imagenServicio.guardar(foto);
-
+        Imagen imagen = imagenServicio.guardar(archivo);
+        System.out.println("Paciente servicio");
         paciente.setNombre(nombre);
         paciente.setApellido(apellido);
         paciente.setEmail(email);
@@ -60,6 +60,16 @@ public class PacienteServicio {
         repoPaciente.save(paciente);
     }
 
+     @Transactional(readOnly = true)
+     public Paciente mostrarPaciente(Long id) throws MiExcepcion{
+        Paciente paciente = repoPaciente.findById(id).get();
+        if (paciente == null) {
+            throw new MiExcepcion("No se pudo encontrar el paciente");
+        } else {
+            return paciente;
+        }
+     }
+    
     @Transactional(readOnly = true)
     public List<Paciente> listarPacientes() {
         List<Paciente> pacientes = new ArrayList();
@@ -76,7 +86,7 @@ public class PacienteServicio {
 
     @Transactional
     public void modificarPaciente(Long id, String nombre, String apellido, String email, Integer telefono,
-            MultipartFile foto /* , Long idObraSocial */) throws MiExcepcion {
+            /*Long idObraSocial,*/ MultipartFile archivo) throws MiExcepcion {
 
         Paciente paciente = repoPaciente.findById(id).get();
         if (paciente == null) {
@@ -86,18 +96,15 @@ public class PacienteServicio {
             paciente.setApellido(apellido);
             paciente.setEmail(email);
             paciente.setTelefono(telefono);
-
-            // ObraSocial obraSocial = repoObraSocial.findById(idObraSocial).get();
-            // paciente.setObraSocial(obraSocial);
-
-            String idImagen = null;
-
+            
+           // ObraSocial obraSocial = servicioObraSocial.buscarPorId(idObraSocial);
+           // paciente.setObraSocial(obraSocial);
+            
+            Integer idImagen = null;
             if (paciente.getImagen() != null) {
                 idImagen = paciente.getImagen().getId();
             }
-
-            Imagen imagen = imagenServicio.actualizar(foto, idImagen);
-
+            Imagen imagen = imagenServicio.actualizar(archivo, idImagen);
             paciente.setImagen(imagen);
 
             repoPaciente.save(paciente);
