@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="../static/style.css">
     <title>Profesional - modificar</title>
 </head>
 <body class="container_fondo">
@@ -87,6 +87,39 @@
 							th:value="${profesional.telefono}"
 							/>
 					</div>
+
+					<div class="label">
+						<label class="subtitulo-label">Matricula</label>
+						<input
+							type="text"
+							class="form-input"
+							name="matricula"
+							placeholder="Ingrese matricula"
+							th:value="${profesional.matricula}"
+							/>
+					</div>
+                                        <div class="label">
+						<label class="subtitulo-label">Descripción</label>
+						<input
+							type="text"
+							class="form-input"
+							name="descripcion"
+							placeholder="Ingrese descripción"
+							th:value="${profesional.descripcion}"
+							/>
+					</div>
+
+					<!--                    
+						<div class="label">
+		<label class="subtitulo-label" >Tipo de consulta</label>
+		<select name="idOS" class="select-crear">
+			<option>Seleccionar tipo de consulta</option>
+			<option value="presencial">Presencial</option>
+			<option value="teleconsulta">Teleconsulta</option>
+		</select>
+	</div>
+					
+					-->
 	
 					<div class="btn-div">
 						<button type="submit" class="btn" id="boton">
