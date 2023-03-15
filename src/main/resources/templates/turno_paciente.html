@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmnls:th="http://www.thymeleaf.org" xmnls:sec="http://www.thymeleaf.org/extras/spring/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../style.css">
+    <title>Turno</title>
+</head>
+<body  class="container_fondo">
+    <header>
+        <nav class="container_nav">
+            <div class="navbar">
+                <ul>
+                    <li class="nav_li">
+                        <a href="/">HOME</a>
+                    </li>
+                    <li class="nav_li">
+                        <a href="/ingresar">INGRESAR</a>
+                    </li>
+                </ul>
+            </div>            
+        </nav>
+    </header>
+
+
+	<main>
+		<section class="container-flex-paciente">
+            <div class="container_paciente_listar">
+
+                            <h3>TURNO</h3>
+                            <form class="form" th:action="@{/paciente/turno}" method="POST" id="formu">
+                                
+                                <div class="label">
+                                    <label class="subtitulo-label" >Profesional</label>
+                                    <select name="profesional" class="select-crear">
+                                        <option>Seleccionar profesional: </option>
+                                        <option 
+                                            th:each="profesional : ${profesionales}"
+                                            th:value="${profesional.id}"
+                                            th:text="${profesinal.nombre}${profesional.apellido}"/>
+                                    </select>
+                                </div>
+
+                                <div class="label">
+                                    <label class="subtitulo-label" >Especialidad</label>
+                                    <select name="dia" class="select-crear">
+                                        <option>Seleccionar especialidad: </option>
+                                        <option 
+                                            th:each="Especialidad : ${Especialidad}"
+                                            th:value="${Especialidad}"
+                                            th:text="${Especialidad}"/>
+                                    </select>
+                                </div>
+
+                                <div class="label">
+                                    <label class="subtitulo-label" >Tipo de consulta</label>
+                                    <select name="dia" class="select-crear">
+                                        <option>Seleccionar tipo de consulta: </option>
+                                        <option 
+                                            th:each="TipoConsulta : ${TipoConsulta}"
+                                            th:value="${TipoConsulta}"
+                                            th:text="${TipoConsulta}"/>
+                                    </select>
+                                </div>
+                                
+                                <div >
+                                    <label class="subtitulo-label" >Dia</label>
+                                    <input type="date" name="dia" id="dia">
+                                </div>
+
+                                <label class="subtitulo-label" >Horario</label>
+                                <select name="horaInicio" id="selectHora">
+                                    <option value="08:00">08:00</option>
+                                    <option value="08:30">08:30</option>
+                                    <option value="09:00">09:00</option>
+                                    <option value="09:30">09:30</option>
+                                    <option value="10:00">10:00</option>
+                                    <option value="10:30">10:30</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="11:30">11:30</option>
+                                    <option value="12:00">12:00</option>
+                                    <option value="12:30">12:30</option>
+                                    <option value="01:00">01:00</option>
+                                    <option value="01:30">01:30</option>
+                                    <option value="02:00">02:00</option>
+                                    <option value="02:30">02:30</option>
+                                    <option value="03:00">03:00</option>
+                                    <option value="03:30">03:30</option>
+                                    <option value="04:00">04:00</option>
+                                    <option value="04:30">04:30</option>
+                                    <option value="05:00">05:00</option>
+                                    <option value="05:30">05:30</option>
+                                    <option value="06:00">06:00</option>
+                                    <option value="06:30">06:30</option>
+                                    <option value="07:00">07:00</option>
+                                    <option value="07:30">07:30</option>
+                                
+                                
+                                </select>
+
+                                <label class="subtitulo-label" > </label>
+                                <select name="" id="">
+                                    name="horaInicio" id="selecTurno">
+                                    <option value="AM">AM</option>
+                                    <option value="PM">PM</option>
+                                </select>
+
+                                <div class="btn-div">
+                                    <button type="submit" class="btn" id="boton">
+                                        <a th:href="@{/}"></a>
+                                        RESERVAR TURNO
+                                    </button>
+                                </div>
+                            </form>
+                            
+
+
+			<section id="btn_volver" class="text-center container">
+				<div class="row mt-3">
+					<div class="divVolver">
+						<a th:href="/" class="btn btn-secondary my-2 botonVolver botones"
+							>Volver</a
+						>
+					</div>
+				</div>
+			</section>
+
+        </div>
+
+		</section>
+	</main>
+</body>
+	
+		<footer>
+			<div class="container_footer">
+				<div>
+					<h6>© 2023 App Salud - Todos los derechos reservados. Términos y condiciones. Políticas de privacidad.</h6>
+				</div>
+		</footer>
