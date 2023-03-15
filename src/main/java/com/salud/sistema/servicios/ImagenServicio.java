@@ -28,7 +28,7 @@ public class ImagenServicio {
                 imagen.setNombre(archivo.getName());
                 
                 imagen.setContenido(archivo.getBytes());
-                
+                System.out.println("Servicio imagen");
                 return imagenRepositorio.save(imagen);
                 
             } catch (Exception e) {
@@ -38,7 +38,7 @@ public class ImagenServicio {
         return null;
     }
     
-    public Imagen actualizar(MultipartFile archivo, String idImagen) throws MiExcepcion{
+    public Imagen actualizar(MultipartFile archivo, Integer idImagen) throws MiExcepcion{
          if (archivo != null) {
             try {
                 

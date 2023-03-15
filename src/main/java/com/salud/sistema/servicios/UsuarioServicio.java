@@ -79,7 +79,7 @@ public class UsuarioServicio implements UserDetailsService {
 
             usuario.setContrasenia(new BCryptPasswordEncoder().encode(contrasenia));
          
-            String idImagen = null;
+            Integer idImagen = null;
             
             if (usuario.getImagen() != null) {
                 idImagen = usuario.getImagen().getId();

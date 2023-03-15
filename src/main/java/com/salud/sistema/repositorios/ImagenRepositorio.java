@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ImagenRepositorio extends JpaRepository<Imagen,Long> {
 
-    public Optional<Imagen> findById(String idImagen);
+    public Optional<Imagen> findById(Integer idImagen);
  
 }
