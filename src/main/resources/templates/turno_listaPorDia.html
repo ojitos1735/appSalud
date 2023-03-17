@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../static/style.css">
+    <title>Lista de turnos por dia</title>
+</head>
+<body  class="container_fondo">
+    <header>
+        <nav class="container_nav">
+            <div class="navbar">
+                <ul>
+                    <li class="nav_li">
+                        <a href="/">HOME</a>
+                    </li>
+                    <li class="nav_li">
+                        <a href="/ingresar">INGRESAR</a>
+                    </li>
+                </ul>
+            </div>            
+        </nav>
+    </header>
+    <main>
+        <div class="container_paciente_listar">
+                <br>
+                <h2>Turnos del dia</h2>
+                <br>
+                <table class="table_container_paciente">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Obra Social</th>
+                            <th scope="col">Horario</th>
+                            <th scope="col">Tipo de consulta</th>
+                            <th scope="col">Acciones</th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody th:each="paciente: ${pacientes}"
+                        th:each="turno: ${turnos}"> 
+                        <tr>
+                            <th scope="row" th:text="${paciente.nombre}"></th>
+                            <td th:text="${paciente.apellido}"></td>
+                            <td th:text="${paciente.obraSocial.nombreOS}"></td>
+                            <th th:text="${turno.horaInicio1}"></th>
+                            <td th:text="${turno.tipoConsulta}"></td>
+                            <td>
+                                <a th:href= "@{/aceptacion/id__${paciente.id}__}"> Aceptar </a>
+                                <a th:href= "@{/cancelar/id__${paciente.id}__}"> Cancelar </a>
+                            </td>
+                
+                        </tr>   
+                <tbody > 
+
+                </table>
+            </div>
+
+    </main>
+
+</body>
+</html>
+
+</html>
