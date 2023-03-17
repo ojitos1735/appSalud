@@ -61,7 +61,7 @@ public class ProfesionalControlador {
             e.getMessage();
         }
 
-       return "profesional_lista.html";
+       return "registro_profesional_listar.html";
     }
 
     @PostMapping("/registro")
@@ -73,7 +73,7 @@ public class ProfesionalControlador {
             return "redirect:/";
     }catch( MiExcepcion ex){
        modelo.put("error", ex.getMessage());
-        return "profesional_form.html";
+        return  "registro_profesional.html";
     }
     }
       @RequestMapping(value="/eliminar/{id}",method={RequestMethod.GET,RequestMethod.DELETE})
